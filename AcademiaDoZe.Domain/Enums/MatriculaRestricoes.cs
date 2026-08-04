@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace AcademiaDoZe.Domain.Enums;
 
-namespace AcademiaDoZe.Domain.Enums
+// Aluno: Alexandre Rocha
+
+public enum MatriculaRestricoes
 {
-    internal class MatriculaRestricoes
-    {
-    }
+    Nenhuma = 0,
+    Diabetes = 1,
+    Hipertensao = 2,
+    ProblemaCardiaco = 3
 }

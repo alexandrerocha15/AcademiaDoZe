@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace AcademiaDoZe.Domain.Enums;
 
-namespace AcademiaDoZe.Domain.Enums
+// Aluno: Alexandre Rocha
+
+public enum ColaboradorVinculo
 {
-    internal class ColaboradorVinculo
-    {
-    }
+    Clt = 0,
+    Estagio = 1
 }

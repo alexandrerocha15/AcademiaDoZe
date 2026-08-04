@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace AcademiaDoZe.Domain.ValueObjects;
 
-namespace AcademiaDoZe.Domain.ValueObjects
+// Aluno: Alexandre Rocha
+
+public class Cep
 {
-    internal class Cep
+    public string Numero { get; protected set; }
+
+    public Cep(string numero)
     {
+        Numero = numero;
     }
 }

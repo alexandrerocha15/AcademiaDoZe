@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace AcademiaDoZe.Domain.Enums;
 
-namespace AcademiaDoZe.Domain.Enums
+// Aluno: Alexandre Rocha
+
+public enum MatriculaPlano
 {
-    internal class MatriculaPlano
-    {
-    }
+    Basico = 0,
+    Plus = 1,
+    Premium = 2
 }

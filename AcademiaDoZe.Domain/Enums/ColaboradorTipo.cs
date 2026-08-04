@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace AcademiaDoZe.Domain.Enums;
 
-namespace AcademiaDoZe.Domain.Entities
+// Aluno: Alexandre Rocha
+
+public enum ColaboradorTipo
 {
-    internal class ColaboradorTipo
-    {
-    }
+    Professor = 1,
+    Personal = 2,
+    Recepcionista = 3
 }

@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace AcademiaDoZe.Domain.Entities;
 
-namespace AcademiaDoZe.Domain.Entities
+// Aluno: Alexandre Rocha
+
+public class AcessoColaborador : Entity
 {
-    internal class AcessoColaborador
+    public AcessoColaborador(int id)
+        : base(id)
     {
     }
 }

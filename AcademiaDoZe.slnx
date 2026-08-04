@@ -1,4 +1,4 @@
 <Solution>
-  <Folder Name="/Entities/" />
+  <Folder Name="/Testes/" />
   <Project Path="AcademiaDoZe.Domain/AcademiaDoZe.Domain.csproj" />
 </Solution>

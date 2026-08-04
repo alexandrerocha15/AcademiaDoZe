@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace AcademiaDoZe.Domain.ValueObjects;
 
-namespace AcademiaDoZe.Domain.ValueObjects
+// Aluno: Alexandre Rocha
+
+public class Senha
 {
-    internal class Senha
+    public string Valor { get; protected set; }
+
+    public Senha(string valor)
     {
+        Valor = valor;
     }
 }

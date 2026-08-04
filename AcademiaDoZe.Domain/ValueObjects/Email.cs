@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace AcademiaDoZe.Domain.ValueObjects;
 
-namespace AcademiaDoZe.Domain.ValueObjects
+// Aluno: Alexandre Rocha
+
+public class Email
 {
-    internal class Email
+    public string Endereco { get; protected set; }
+
+    public Email(string endereco)
     {
+        Endereco = endereco;
     }
 }
