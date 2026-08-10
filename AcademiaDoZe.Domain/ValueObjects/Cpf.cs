@@ -2,12 +2,12 @@
 
 // Aluno: Alexandre Rocha
 
-public class Cpf
+public record Cpf
 {
-    public string Numero { get; protected set; }
+    public string Valor { get; }
 
-    public Cpf(string numero)
+    private Cpf(string valor)
     {
-        Numero = numero;
+        Valor = valor;
     }
 }

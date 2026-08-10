@@ -6,14 +6,17 @@ namespace AcademiaDoZe.Domain.Entities;
 
 public class Aluno : Pessoa
 {
-    public Aluno(
+    private Aluno(
         int id,
         string nome,
         Cpf cpf,
-        Email email,
+        DateOnly dataNascimento,
         Telefone telefone,
-        Endereco endereco)
-        : base(id, nome, cpf, email, telefone, endereco)
+        Email email,
+        Endereco endereco,
+        Senha senha,
+        Arquivo foto)
+        : base(id, nome, cpf, dataNascimento, telefone, email, endereco, senha, foto)
     {
     }
 }

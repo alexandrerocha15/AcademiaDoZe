@@ -2,11 +2,11 @@
 
 // Aluno: Alexandre Rocha
 
-public class Senha
+public record Senha
 {
-    public string Valor { get; protected set; }
+    public string Valor { get; }
 
-    public Senha(string valor)
+    private Senha(string valor)
     {
         Valor = valor;
     }

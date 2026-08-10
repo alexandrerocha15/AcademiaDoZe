@@ -2,10 +2,14 @@
 
 // Aluno: Alexandre Rocha
 
+[Flags]
 public enum MatriculaRestricoes
 {
-    Nenhuma = 0,
+    None = 0,
     Diabetes = 1,
-    Hipertensao = 2,
-    ProblemaCardiaco = 3
+    PressaoAlta = 2,
+    Labirintite = 4,
+    Alergias = 8,
+    ProblemasRespiratorios = 16,
+    RemedioContinuo = 32
 }

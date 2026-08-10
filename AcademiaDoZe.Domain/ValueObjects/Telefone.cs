@@ -2,12 +2,12 @@
 
 // Aluno: Alexandre Rocha
 
-public class Telefone
+public record Telefone
 {
-    public string Numero { get; protected set; }
+    public string Valor { get; }
 
-    public Telefone(string numero)
+    private Telefone(string valor)
     {
-        Numero = numero;
+        Valor = valor;
     }
 }
