@@ -1,12 +1,40 @@
-﻿namespace AcademiaDoZe.Domain.Entities;
+﻿using AcademiaDoZe.Domain.Enums;
+using AcademiaDoZe.Domain.ValueObjects;
+
+namespace AcademiaDoZe.Domain.Entities;
 
 // Aluno: Alexandre Rocha
 
 public class Matricula : Entity
 {
-    public Matricula(int id) 
+    public Aluno AlunoMatricula { get; private set; }
+    public MatriculaPlano Plano { get; private set; }
+    public DateOnly DataInicio { get; private set; }
+    public DateOnly DataFim { get; private set; }
+    public string Objetivo { get; private set; }
+    public MatriculaRestricoes RestricoesMedicas { get; private set; }
+    public string ObservacoesRestricoes { get; private set; }
+    public Arquivo? LaudoMedico { get; private set; }
+
+    private Matricula(
+        int id,
+        Aluno alunoMatricula,
+        MatriculaPlano plano,
+        DateOnly dataInicio,
+        DateOnly dataFim,
+        string objetivo,
+        MatriculaRestricoes restricoesMedicas,
+        Arquivo? laudoMedico,
+        string observacoesRestricoes = "")
         : base(id)
     {
-
+        AlunoMatricula = alunoMatricula;
+        Plano = plano;
+        DataInicio = dataInicio;
+        DataFim = dataFim;
+        Objetivo = objetivo;
+        RestricoesMedicas = restricoesMedicas;
+        LaudoMedico = laudoMedico;
+        ObservacoesRestricoes = observacoesRestricoes;
     }
 }

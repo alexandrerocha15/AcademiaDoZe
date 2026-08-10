@@ -1,13 +1,22 @@
-﻿namespace AcademiaDoZe.Domain.ValueObjects;
+﻿using AcademiaDoZe.Domain.Entities;
+
+namespace AcademiaDoZe.Domain.ValueObjects;
 
 // Aluno: Alexandre Rocha
 
-public class Endereco
+public record Endereco
 {
-    public string Logradouro { get; protected set; }
+    public Logradouro Logradouro { get; }
+    public string Numero { get; }
+    public string Complemento { get; }
 
-    public Endereco(string logradouro)
+    private Endereco(
+        Logradouro logradouro,
+        string numero,
+        string complemento)
     {
         Logradouro = logradouro;
+        Numero = numero;
+        Complemento = complemento;
     }
 }

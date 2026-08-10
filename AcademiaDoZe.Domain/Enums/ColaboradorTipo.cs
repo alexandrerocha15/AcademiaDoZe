@@ -4,7 +4,7 @@
 
 public enum ColaboradorTipo
 {
-    Professor = 1,
-    Personal = 2,
-    Recepcionista = 3
+    Administrador = 0,
+    Atendente = 1,
+    Instrutor = 2
 }

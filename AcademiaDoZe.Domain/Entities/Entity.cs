@@ -1,9 +1,8 @@
-﻿using AcademiaDoZe.Domain.Entities;
-using System;
-
-// Aluno: Alexandre Rocha
+﻿using AcademiaDoZe.Domain.Exceptions;
 
 namespace AcademiaDoZe.Domain.Entities;
+
+// Aluno: Alexandre Rocha
 
 public abstract class Entity
 {
@@ -12,7 +11,7 @@ public abstract class Entity
     protected Entity(int id = 0)
     {
         if (id < 0)
-            throw new Exception("ID_NEGATIVO");
+            throw new DomainException("ID_NEGATIVO");
 
         Id = id;
     }

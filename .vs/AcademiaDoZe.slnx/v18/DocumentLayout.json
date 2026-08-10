@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Cliente\\Desktop\\Faculdade\\4 Semestre\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7628623E-1E2B-93F9-0EC9-A73766DA9E72}|AcademiaDoZe.Domain\\AcademiaDoZe.Domain.csproj|c:\\users\\cliente\\desktop\\faculdade\\4 semestre\\academiadoze.domain\\valueobjects\\cpf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7628623E-1E2B-93F9-0EC9-A73766DA9E72}|AcademiaDoZe.Domain\\AcademiaDoZe.Domain.csproj|solutionrelative:academiadoze.domain\\valueobjects\\cpf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Cpf.cs",
+              "DocumentMoniker": "C:\\Users\\Cliente\\Desktop\\Faculdade\\4 Semestre\\AcademiaDoZe.Domain\\ValueObjects\\Cpf.cs",
+              "RelativeDocumentMoniker": "AcademiaDoZe.Domain\\ValueObjects\\Cpf.cs",
+              "ToolTip": "C:\\Users\\Cliente\\Desktop\\Faculdade\\4 Semestre\\AcademiaDoZe.Domain\\ValueObjects\\Cpf.cs*",
+              "RelativeToolTip": "AcademiaDoZe.Domain\\ValueObjects\\Cpf.cs*",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAAC8AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T22:25:50.041Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -2,12 +2,12 @@
 
 // Aluno: Alexandre Rocha
 
-public class Cep
+public record Cep
 {
-    public string Numero { get; protected set; }
+    public string Valor { get; }
 
-    public Cep(string numero)
+    private Cep(string valor)
     {
-        Numero = numero;
+        Valor = valor;
     }
 }

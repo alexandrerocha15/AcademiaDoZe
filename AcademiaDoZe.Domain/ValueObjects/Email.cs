@@ -2,12 +2,12 @@
 
 // Aluno: Alexandre Rocha
 
-public class Email
+public record Email
 {
-    public string Endereco { get; protected set; }
+    public string Valor { get; }
 
-    public Email(string endereco)
+    private Email(string valor)
     {
-        Endereco = endereco;
+        Valor = valor;
     }
 }

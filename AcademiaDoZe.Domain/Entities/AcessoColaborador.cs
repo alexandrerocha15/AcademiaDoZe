@@ -4,8 +4,16 @@
 
 public class AcessoColaborador : Entity
 {
-    public AcessoColaborador(int id)
+    public Colaborador Colaborador { get; private set; }
+    public DateTime DataHora { get; private set; }
+
+    private AcessoColaborador(
+        int id,
+        Colaborador colaborador,
+        DateTime dataHora)
         : base(id)
     {
+        Colaborador = colaborador;
+        DataHora = dataHora;
     }
 }

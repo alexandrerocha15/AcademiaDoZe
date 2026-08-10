@@ -2,12 +2,12 @@
 
 // Aluno: Alexandre Rocha
 
-public class Arquivo
+public record Arquivo
 {
-    public string Nome { get; protected set; }
+    public byte[] Conteudo { get; }
 
-    public Arquivo(string nome)
+    private Arquivo(byte[] conteudo)
     {
-        Nome = nome;
+        Conteudo = conteudo;
     }
 }

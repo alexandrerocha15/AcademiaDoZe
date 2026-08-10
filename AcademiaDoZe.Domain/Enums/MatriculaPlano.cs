@@ -4,7 +4,8 @@
 
 public enum MatriculaPlano
 {
-    Basico = 0,
-    Plus = 1,
-    Premium = 2
+    Mensal = 0,
+    Trimestral = 1,
+    Semestral = 2,
+    Anual = 3
 }
