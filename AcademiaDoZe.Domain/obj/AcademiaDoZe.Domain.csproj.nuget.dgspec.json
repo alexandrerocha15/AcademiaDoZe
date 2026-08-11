@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Cliente\\Desktop\\Faculdade\\4 Semestre\\AcademiaDoZe.Domain\\AcademiaDoZe.Domain.csproj": {}
+    "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain\\AcademiaDoZe.Domain.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Cliente\\Desktop\\Faculdade\\4 Semestre\\AcademiaDoZe.Domain\\AcademiaDoZe.Domain.csproj": {
+    "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain\\AcademiaDoZe.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Cliente\\Desktop\\Faculdade\\4 Semestre\\AcademiaDoZe.Domain\\AcademiaDoZe.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain\\AcademiaDoZe.Domain.csproj",
         "projectName": "AcademiaDoZe.Domain",
-        "projectPath": "c:\\Users\\Cliente\\Desktop\\Faculdade\\4 Semestre\\AcademiaDoZe.Domain\\AcademiaDoZe.Domain.csproj",
-        "packagesPath": "C:\\Users\\Cliente\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Cliente\\Desktop\\Faculdade\\4 Semestre\\AcademiaDoZe.Domain\\obj\\",
+        "projectPath": "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain\\AcademiaDoZe.Domain.csproj",
+        "packagesPath": "C:\\Users\\juny1\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Cliente\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\juny1\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
