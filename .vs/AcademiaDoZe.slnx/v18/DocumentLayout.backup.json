@@ -1,0 +1,141 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4472CD47-CA45-4A1A-B8D6-CE9D0371B0C4}|AcademiaDoZe.Domain.Tests\\AcademiaDoZe.Domain.Tests.csproj|c:\\users\\juny1\\desktop\\faculdade\\4 semestre\\dev sistemas 2\\academiadoze\\academiadoze.domain.tests\\entities\\alunotests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4472CD47-CA45-4A1A-B8D6-CE9D0371B0C4}|AcademiaDoZe.Domain.Tests\\AcademiaDoZe.Domain.Tests.csproj|solutionrelative:academiadoze.domain.tests\\entities\\alunotests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4472CD47-CA45-4A1A-B8D6-CE9D0371B0C4}|AcademiaDoZe.Domain.Tests\\AcademiaDoZe.Domain.Tests.csproj|c:\\users\\juny1\\desktop\\faculdade\\4 semestre\\dev sistemas 2\\academiadoze\\academiadoze.domain.tests\\entities\\logradourotests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4472CD47-CA45-4A1A-B8D6-CE9D0371B0C4}|AcademiaDoZe.Domain.Tests\\AcademiaDoZe.Domain.Tests.csproj|solutionrelative:academiadoze.domain.tests\\entities\\logradourotests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4472CD47-CA45-4A1A-B8D6-CE9D0371B0C4}|AcademiaDoZe.Domain.Tests\\AcademiaDoZe.Domain.Tests.csproj|c:\\users\\juny1\\desktop\\faculdade\\4 semestre\\dev sistemas 2\\academiadoze\\academiadoze.domain.tests\\valueobjectstests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4472CD47-CA45-4A1A-B8D6-CE9D0371B0C4}|AcademiaDoZe.Domain.Tests\\AcademiaDoZe.Domain.Tests.csproj|solutionrelative:academiadoze.domain.tests\\valueobjectstests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4472CD47-CA45-4A1A-B8D6-CE9D0371B0C4}|AcademiaDoZe.Domain.Tests\\AcademiaDoZe.Domain.Tests.csproj|c:\\users\\juny1\\desktop\\faculdade\\4 semestre\\dev sistemas 2\\academiadoze\\academiadoze.domain.tests\\entities\\acessocolaboradortests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4472CD47-CA45-4A1A-B8D6-CE9D0371B0C4}|AcademiaDoZe.Domain.Tests\\AcademiaDoZe.Domain.Tests.csproj|solutionrelative:academiadoze.domain.tests\\entities\\acessocolaboradortests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4472CD47-CA45-4A1A-B8D6-CE9D0371B0C4}|AcademiaDoZe.Domain.Tests\\AcademiaDoZe.Domain.Tests.csproj|c:\\users\\juny1\\desktop\\faculdade\\4 semestre\\dev sistemas 2\\academiadoze\\academiadoze.domain.tests\\entities\\acessoalunotests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4472CD47-CA45-4A1A-B8D6-CE9D0371B0C4}|AcademiaDoZe.Domain.Tests\\AcademiaDoZe.Domain.Tests.csproj|solutionrelative:academiadoze.domain.tests\\entities\\acessoalunotests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4472CD47-CA45-4A1A-B8D6-CE9D0371B0C4}|AcademiaDoZe.Domain.Tests\\AcademiaDoZe.Domain.Tests.csproj|c:\\users\\juny1\\desktop\\faculdade\\4 semestre\\dev sistemas 2\\academiadoze\\academiadoze.domain.tests\\entities\\matriculatests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4472CD47-CA45-4A1A-B8D6-CE9D0371B0C4}|AcademiaDoZe.Domain.Tests\\AcademiaDoZe.Domain.Tests.csproj|solutionrelative:academiadoze.domain.tests\\entities\\matriculatests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4472CD47-CA45-4A1A-B8D6-CE9D0371B0C4}|AcademiaDoZe.Domain.Tests\\AcademiaDoZe.Domain.Tests.csproj|c:\\users\\juny1\\desktop\\faculdade\\4 semestre\\dev sistemas 2\\academiadoze\\academiadoze.domain.tests\\entities\\colaboradortests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4472CD47-CA45-4A1A-B8D6-CE9D0371B0C4}|AcademiaDoZe.Domain.Tests\\AcademiaDoZe.Domain.Tests.csproj|solutionrelative:academiadoze.domain.tests\\entities\\colaboradortests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LogradouroTests.cs",
+              "DocumentMoniker": "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain.Tests\\Entities\\LogradouroTests.cs",
+              "RelativeDocumentMoniker": "AcademiaDoZe.Domain.Tests\\Entities\\LogradouroTests.cs",
+              "ToolTip": "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain.Tests\\Entities\\LogradouroTests.cs",
+              "RelativeToolTip": "AcademiaDoZe.Domain.Tests\\Entities\\LogradouroTests.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAswIQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T02:58:57.844Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ValueObjectsTests.cs",
+              "DocumentMoniker": "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain.Tests\\ValueObjectsTests.cs",
+              "RelativeDocumentMoniker": "AcademiaDoZe.Domain.Tests\\ValueObjectsTests.cs",
+              "ToolTip": "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain.Tests\\ValueObjectsTests.cs",
+              "RelativeToolTip": "AcademiaDoZe.Domain.Tests\\ValueObjectsTests.cs",
+              "ViewState": "AgIAALMAAAAAAAAAAAAAwNQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T02:57:43.395Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AlunoTests.cs",
+              "DocumentMoniker": "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain.Tests\\Entities\\AlunoTests.cs",
+              "RelativeDocumentMoniker": "AcademiaDoZe.Domain.Tests\\Entities\\AlunoTests.cs",
+              "ToolTip": "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain.Tests\\Entities\\AlunoTests.cs",
+              "RelativeToolTip": "AcademiaDoZe.Domain.Tests\\Entities\\AlunoTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAOidwGwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T02:48:17.311Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AcessoColaboradorTests.cs",
+              "DocumentMoniker": "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain.Tests\\Entities\\AcessoColaboradorTests.cs",
+              "RelativeDocumentMoniker": "AcademiaDoZe.Domain.Tests\\Entities\\AcessoColaboradorTests.cs",
+              "ToolTip": "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain.Tests\\Entities\\AcessoColaboradorTests.cs",
+              "RelativeToolTip": "AcademiaDoZe.Domain.Tests\\Entities\\AcessoColaboradorTests.cs",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAswIUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T02:54:00.081Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AcessoAlunoTests.cs",
+              "DocumentMoniker": "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain.Tests\\Entities\\AcessoAlunoTests.cs",
+              "RelativeDocumentMoniker": "AcademiaDoZe.Domain.Tests\\Entities\\AcessoAlunoTests.cs",
+              "ToolTip": "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain.Tests\\Entities\\AcessoAlunoTests.cs",
+              "RelativeToolTip": "AcademiaDoZe.Domain.Tests\\Entities\\AcessoAlunoTests.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAswGEAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T02:51:58.013Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MatriculaTests.cs",
+              "DocumentMoniker": "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain.Tests\\Entities\\MatriculaTests.cs",
+              "RelativeDocumentMoniker": "AcademiaDoZe.Domain.Tests\\Entities\\MatriculaTests.cs",
+              "ToolTip": "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain.Tests\\Entities\\MatriculaTests.cs",
+              "RelativeToolTip": "AcademiaDoZe.Domain.Tests\\Entities\\MatriculaTests.cs",
+              "ViewState": "AgIAAAoBAAAAAAAAAAAswB0BAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T02:50:46.269Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ColaboradorTests.cs",
+              "DocumentMoniker": "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain.Tests\\Entities\\ColaboradorTests.cs",
+              "RelativeDocumentMoniker": "AcademiaDoZe.Domain.Tests\\Entities\\ColaboradorTests.cs",
+              "ToolTip": "C:\\Users\\juny1\\Desktop\\Faculdade\\4 Semestre\\Dev Sistemas 2\\AcademiaDoZe\\AcademiaDoZe.Domain.Tests\\Entities\\ColaboradorTests.cs",
+              "RelativeToolTip": "AcademiaDoZe.Domain.Tests\\Entities\\ColaboradorTests.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAkwKIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T02:49:55.221Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

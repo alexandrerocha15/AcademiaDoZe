@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AcademiaDoZe.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d42c779656b6e5824979f46fe71ff2ce99c42d1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+019554647a0c568cf78882eef4580ef07012b76a")]
 [assembly: System.Reflection.AssemblyProductAttribute("AcademiaDoZe.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AcademiaDoZe.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
