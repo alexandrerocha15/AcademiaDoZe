@@ -58,7 +58,11 @@ public sealed class Logradouro : Entity, IAggregateRoot
             notifications.Add(new Notification("Cidade", "CIDADE_OBRIGATORIO"));
 
         if (NormalizacaoService.TextoVazioOuNulo(estado))
-            notifications.Add(new Notification("Estado", "ESTADO_OBRIGATORIO"));
+            notifications.Add(
+                new Notification("Estado", "ESTADO_OBRIGATORIO"));
+        else
+            estado = NormalizacaoService.ParaMaiusculo(
+                NormalizacaoService.LimparTodosEspacos(estado));
 
         if (NormalizacaoService.TextoVazioOuNulo(pais))
             notifications.Add(new Notification("Pais", "PAIS_OBRIGATORIO"));
