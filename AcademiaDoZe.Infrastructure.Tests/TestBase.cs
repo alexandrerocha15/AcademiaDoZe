@@ -1,4 +1,5 @@
 using AcademiaDoZe.Infrastructure.Data;
+using Xunit;
 
 [assembly: CollectionBehavior(
     CollectionBehavior.CollectionPerAssembly,
@@ -8,8 +9,8 @@ namespace AcademiaDoZe.Infrastructure.Tests;
 
 public abstract class TestBase
 {
-    // Alterne o SGBD alvo dos testes trocando apenas esta constante
-    private const DatabaseType SelectedDatabaseType = DatabaseType.MySql;
+    // Por enquanto começamos com SQLite
+    private const DatabaseType SelectedDatabaseType = DatabaseType.SqlServer;
 
     protected string ConnectionString { get; }
     protected DatabaseType DatabaseType { get; }
@@ -25,8 +26,9 @@ public abstract class TestBase
 
             DatabaseType.MySql =>
                 "Server=localhost;Port=3307;Database=db_academia_do_ze;User Id=root;Password=abcBolinhas12345;",
+
             DatabaseType.Sqlite =>
-                $"Data Source={Path.Combine(AppContext.BaseDirectory, "db_academia_do_ze.db")};Cache=Shared;",
+                @"Data Source=db_academia_do_ze.db;Cache=Shared;",
 
             _ => throw new ArgumentOutOfRangeException(
                 nameof(DatabaseType),
@@ -34,31 +36,4 @@ public abstract class TestBase
                 "SGBD não suportado para testes.")
         };
     }
-
-    #region Geradores de dados aleatórios
-
-    private static int _counter = 10000;
-
-    protected static string GerarCep() =>
-        (80000000 +
-         ((int)(DateTime.UtcNow.Ticks % 8000000)) +
-         Interlocked.Increment(ref _counter))
-        .ToString("D8")[..8];
-
-    protected static string GerarCpf() =>
-        (10000000000L +
-         (DateTime.UtcNow.Ticks % 8000000000L) +
-         Interlocked.Increment(ref _counter))
-        .ToString("D11")[..11];
-
-    protected static string GerarEmail() =>
-        $"user_{Guid.NewGuid().ToString("N")[..8]}@test.com";
-
-    protected static string GerarTelefone() =>
-        (49990000000L +
-         (DateTime.UtcNow.Ticks % 8000000000L) +
-         Interlocked.Increment(ref _counter))
-        .ToString("D11")[..11];
-
-    #endregion
 }
