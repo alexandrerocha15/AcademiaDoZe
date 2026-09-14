@@ -10,7 +10,7 @@ namespace AcademiaDoZe.Infrastructure.Tests;
 public abstract class TestBase
 {
     // Por enquanto começamos com SQLite
-    private const DatabaseType SelectedDatabaseType = DatabaseType.SqlServer;
+    private const DatabaseType SelectedDatabaseType = DatabaseType.Sqlite;
     protected static string SenhaDoBanco => SelectedDatabaseType switch
     {
         DatabaseType.Sqlite => "SenhaSQLite123",
