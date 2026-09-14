@@ -11,6 +11,13 @@ public abstract class TestBase
 {
     // Por enquanto começamos com SQLite
     private const DatabaseType SelectedDatabaseType = DatabaseType.SqlServer;
+    protected static string SenhaDoBanco => SelectedDatabaseType switch
+    {
+        DatabaseType.Sqlite => "SenhaSQLite123",
+        DatabaseType.SqlServer => "SenhaSQLServer123",
+        DatabaseType.MySql => "SenhaMySQL123",
+        _ => "SenhaValida123"
+    };
 
     protected string ConnectionString { get; }
     protected DatabaseType DatabaseType { get; }
@@ -35,5 +42,42 @@ public abstract class TestBase
                 DatabaseType,
                 "SGBD não suportado para testes.")
         };
+    }
+    protected static string GerarCpf()
+    {
+        var random = Random.Shared;
+
+        int[] numeros = new int[11];
+
+        for (int i = 0; i < 9; i++)
+            numeros[i] = random.Next(0, 10);
+
+        int soma = 0;
+
+        for (int i = 0; i < 9; i++)
+            soma += numeros[i] * (10 - i);
+
+        int resto = soma % 11;
+        numeros[9] = resto < 2 ? 0 : 11 - resto;
+
+        soma = 0;
+
+        for (int i = 0; i < 10; i++)
+            soma += numeros[i] * (11 - i);
+
+        resto = soma % 11;
+        numeros[10] = resto < 2 ? 0 : 11 - resto;
+
+        return string.Concat(numeros);
+    }
+
+    protected static string GerarTelefone()
+    {
+        return $"49{Random.Shared.Next(900000000, 999999999)}";
+    }
+
+    protected static string GerarEmail()
+    {
+        return $"alexandre.{Guid.NewGuid():N}@teste.com";
     }
 }

@@ -19,14 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
-  <ProjectReference Include="..\AcademiaDoZe.Domain\AcademiaDoZe.Domain.csproj" />
-  <ProjectReference Include="..\AcademiaDoZe.Infrastructure\AcademiaDoZe.Infrastructure.csproj" />
-</ItemGroup>
-=======
     <ProjectReference Include="..\AcademiaDoZe.Domain\AcademiaDoZe.Domain.csproj" />
     <ProjectReference Include="..\AcademiaDoZe.Infrastructure\AcademiaDoZe.Infrastructure.csproj" />
   </ItemGroup>
->>>>>>> 91e6a53 (Adiciona Testes em Logradouro em Atv 05)
 
 </Project>
