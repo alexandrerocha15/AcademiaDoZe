@@ -416,4 +416,79 @@ WHERE id_aluno = @Id";
                 ex);
         }
     }
+
+    public async Task<IEnumerable<Aluno>> ObterPorNome(
+    string nome,
+    CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            string query =
+                $"{BaseSelectQuery} WHERE a.nome LIKE @Nome ORDER BY a.nome";
+
+            await using var command =
+                await CreateCommandAsync(query, cancellationToken);
+
+            command.AddParameter(
+                "@Nome",
+                $"%{nome}%",
+                DbType.String);
+
+            await using var reader =
+                await command.ExecuteReaderAsync(cancellationToken);
+
+            var alunos = new List<Aluno>();
+
+            while (await reader.ReadAsync(cancellationToken))
+            {
+                alunos.Add(Map(reader));
+            }
+
+            return alunos;
+        }
+        catch (DbException ex)
+        {
+            throw new InfrastructureException(
+                "ERRO_OBTER_POR_NOME",
+                $"Erro ao obter alunos por nome {nome}: {ex.Message}",
+                ex);
+        }
+    }
+
+    public async Task<bool> TrocarSenha(
+        int id,
+        Senha novaSenha,
+        CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            string query =
+                "UPDATE tb_aluno SET senha = @Senha WHERE id_aluno = @Id";
+
+            await using var command =
+                await CreateCommandAsync(query, cancellationToken);
+
+            command.AddParameter(
+                "@Senha",
+                novaSenha.Valor,
+                DbType.String);
+
+            command.AddParameter(
+                "@Id",
+                id,
+                DbType.Int32);
+
+            int rowsAffected =
+                await command.ExecuteNonQueryAsync(cancellationToken);
+
+            return rowsAffected > 0;
+        }
+        catch (DbException ex)
+        {
+            throw new InfrastructureException(
+                "ERRO_TROCAR_SENHA",
+                $"Erro ao trocar senha do aluno ID {id}: {ex.Message}",
+                ex);
+        }
+    }
 }

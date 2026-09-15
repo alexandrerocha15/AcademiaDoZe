@@ -19,4 +19,9 @@ public interface ILogradouroRepository : IRepository<Logradouro>
     Task<IEnumerable<Logradouro>> ObterPorCidade(
         string cidade,
         CancellationToken cancellationToken = default);
+
+    Task<IEnumerable<Logradouro>> ObterPorBairro(
+        string cidade,
+        string bairro,
+        CancellationToken cancellationToken = default);
 }

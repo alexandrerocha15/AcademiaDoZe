@@ -22,4 +22,12 @@ public interface IMatriculaRepository : IRepository<Matricula>
     Task<IEnumerable<Matricula>> ObterPorPlano(
         MatriculaPlano plano,
         CancellationToken cancellationToken = default);
+
+    Task<IEnumerable<Matricula>> ObterAtivas(
+        int alunoId = 0,
+        CancellationToken cancellationToken = default);
+
+    Task<IEnumerable<Matricula>> ObterVencendoEmDias(
+        int dias,
+        CancellationToken cancellationToken = default);
 }
