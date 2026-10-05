@@ -1,16 +1,14 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace AcademiaDoZe.Presentation.AppMaui;
+﻿namespace AcademiaDoZe.Presentation.AppMaui;
 
 public partial class App : Microsoft.Maui.Controls.Application
 {
-	public App()
-	{
-		InitializeComponent();
-	}
+    public App()
+    {
+        InitializeComponent();
+    }
 
-	protected override Window CreateWindow(IActivationState? activationState)
-	{
-		return new Window(new AppShell());
-	}
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        return new Window(new AppShell());
+    }
 }
