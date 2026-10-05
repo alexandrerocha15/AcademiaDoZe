@@ -1,4 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="456" height="456" viewBox="0 0 456 456" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0" y="0" width="456" height="456" fill="#512BD4" />
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="512"
+     height="512"
+     viewBox="0 0 512 512">
+
+    <rect width="512"
+          height="512"
+          rx="110"
+          fill="#1E293B"/>
+
+    <circle cx="256"
+            cy="256"
+            r="155"
+            fill="#3B82F6"/>
+
+    <path d="M150 235
+             H195
+             V205
+             H225
+             V307
+             H195
+             V277
+             H150
+             Z
+             
+             M362 235
+             H317
+             V205
+             H287
+             V307
+             H317
+             V277
+             H362
+             Z
+             
+             M225 241
+             H287
+             V271
+             H225
+             Z"
+          fill="white"/>
 </svg>
