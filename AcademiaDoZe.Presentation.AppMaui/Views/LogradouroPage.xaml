@@ -27,7 +27,14 @@
                                 Command="{Binding SearchByCepCommand}"
                                 Style="{StaticResource ButtonPrimary}"
                                 HeightRequest="40"
-                                Padding="15,0"/>
+                                Padding="15,0">
+                            <Button.ImageSource>
+                                <FontImageSource
+                                    FontFamily="MaterialIcons"
+                                    Glyph="&#xe8b6;"
+                                    Size="20" />
+                            </Button.ImageSource>
+                        </Button>
                     </Grid>
 
                 </StackLayout>
@@ -82,13 +89,27 @@
                         Text="Cancelar"
                         Command="{Binding CancelCommand}"
                         Style="{StaticResource ButtonSecondary}"
-                        HeightRequest="50"/>
+                        HeightRequest="50">
+                    <Button.ImageSource>
+                        <FontImageSource
+                            FontFamily="MaterialIcons"
+                            Glyph="&#xe5c9;"
+                            Size="20" />
+                    </Button.ImageSource>
+                </Button>
 
                 <Button Grid.Column="1"
                         Text="Salvar"
                         Command="{Binding SaveLogradouroCommand}"
                         Style="{StaticResource ButtonPrimary}"
-                        HeightRequest="50"/>
+                        HeightRequest="50">
+                    <Button.ImageSource>
+                        <FontImageSource
+                            FontFamily="MaterialIcons"
+                            Glyph="&#xe161;"
+                            Size="20" />
+                    </Button.ImageSource>
+                </Button>
             </Grid>
 
             <ActivityIndicator IsVisible="{Binding IsBusy}"
