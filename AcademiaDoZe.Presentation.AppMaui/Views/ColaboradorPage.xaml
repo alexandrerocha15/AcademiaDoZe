@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
+    xmlns:converters="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Converters"
+    x:Class="AcademiaDoZe.Presentation.AppMaui.Views.ColaboradorPage"
+    x:DataType="vm:ColaboradorViewModel"
+    Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <converters:FotoToImageSourceConverter x:Key="FotoConverter" />
+        <converters:DateOnlyToDateTimeConverter x:Key="DateOnlyConverter" />
+        <converters:EnumDisplayConverter x:Key="EnumDisplay" />
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="15">
+
+            <!-- CPF -->
+            <Border Style="{StaticResource CardBorder}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="CPF" />
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                        <Entry Text="{Binding Colaborador.Cpf}"
+                               Placeholder="000.000.000-00"
+                               Keyboard="Numeric"
+                               MaxLength="14"
+                               ReturnCommand="{Binding SearchByCpfCommand}" />
+                        <Button Grid.Column="1"
+                                Text="Buscar CPF"
+                                Command="{Binding SearchByCpfCommand}"
+                                Style="{StaticResource ButtonPrimary}" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- DADOS PESSOAIS -->
+            <Border Style="{StaticResource CardBorder}">
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="Dados Pessoais"
+                           Style="{StaticResource SubHeadline}" />
+
+                    <Label Text="{Binding Colaborador.Id, StringFormat='Colaborador ID: {0}'}"
+                           IsVisible="{Binding IsEditMode}" />
+
+                    <Label Text="Nome" />
+                    <Entry Text="{Binding Colaborador.Nome}"
+                           Placeholder="Nome completo"
+                           MaxLength="150" />
+
+                    <Label Text="Data de Nascimento" />
+                    <DatePicker Date="{Binding Colaborador.DataNascimento, Converter={StaticResource DateOnlyConverter}, Mode=TwoWay}"
+                                Format="dd/MM/yyyy" />
+
+                    <Label Text="Telefone" />
+                    <Entry Text="{Binding Colaborador.Telefone}"
+                           Keyboard="Telephone"
+                           Placeholder="(00) 00000-0000"
+                           MaxLength="15" />
+
+                    <Label Text="E-mail" />
+                    <Entry Text="{Binding Colaborador.Email}"
+                           Keyboard="Email"
+                           Placeholder="exemplo@email.com" />
+
+                    <Label Text="Senha" />
+                    <Entry Text="{Binding Colaborador.Senha}"
+                           IsPassword="True"
+                           Placeholder="Digite a senha" />
+
+                    <Label Text="Deixe em branco para manter a senha atual."
+                           FontSize="12"
+                           IsVisible="{Binding IsEditMode}" />
+
+                    <Label Text="Confirmar Senha" />
+                    <Entry Text="{Binding ConfirmarSenha}"
+                           IsPassword="True"
+                           Placeholder="Confirme a senha" />
+
+                    <Label Text="Foto" />
+                    <Image Source="{Binding Colaborador.Foto, Converter={StaticResource FotoConverter}}"
+                           WidthRequest="120"
+                           HeightRequest="120"
+                           Aspect="AspectFill"
+                           HorizontalOptions="Start" />
+
+                    <Button Text="Selecionar Imagem"
+                            Command="{Binding SelecionarFotoCommand}"
+                            Style="{StaticResource ButtonPrimary}" />
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- ENDEREÇO -->
+            <Border Style="{StaticResource CardBorder}">
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="Endereço"
+                           Style="{StaticResource SubHeadline}" />
+
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                        <Entry Text="{Binding Colaborador.Endereco.Cep}"
+                               Placeholder="00000-000"
+                               Keyboard="Numeric"
+                               MaxLength="9"
+                               ReturnCommand="{Binding SearchByCepCommand}" />
+
+                        <Button Grid.Column="1"
+                                Text="Buscar CEP"
+                                Command="{Binding SearchByCepCommand}"
+                                Style="{StaticResource ButtonPrimary}" />
+                    </Grid>
+
+                    <Label Text="Nenhum logradouro vinculado. Informe o CEP e clique em Buscar CEP."
+                           IsVisible="{Binding HasNoEnderecoVinculado}"
+                           FontSize="12" />
+
+                    <VerticalStackLayout Spacing="5"
+                                         IsVisible="{Binding HasEnderecoVinculado}">
+                        <Label Text="Logradouro vinculado"
+                               FontAttributes="Bold" />
+                        <Label Text="{Binding Colaborador.Endereco.Nome, StringFormat='Rua: {0}'}" />
+                        <Label Text="{Binding Colaborador.Endereco.Bairro, StringFormat='Bairro: {0}'}" />
+                        <Label Text="{Binding Colaborador.Endereco.Cidade, StringFormat='Cidade: {0}'}" />
+                        <Label Text="{Binding Colaborador.Endereco.Estado, StringFormat='Estado: {0}'}" />
+                    </VerticalStackLayout>
+
+                    <Label Text="Número" />
+                    <Entry Text="{Binding Colaborador.Numero}"
+                           Placeholder="Número" />
+
+                    <Label Text="Complemento" />
+                    <Entry Text="{Binding Colaborador.Complemento}"
+                           Placeholder="Complemento (opcional)" />
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- DADOS DE TRABALHO -->
+            <Border Style="{StaticResource CardBorder}">
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="Dados de Trabalho"
+                           Style="{StaticResource SubHeadline}" />
+
+                    <Label Text="Data de Admissão" />
+                    <DatePicker Date="{Binding Colaborador.DataAdmissao, Converter={StaticResource DateOnlyConverter}, Mode=TwoWay}"
+                                Format="dd/MM/yyyy" />
+
+                    <Label Text="Tipo" />
+                    <Picker ItemsSource="{Binding ColaboradorTipos}"
+                            SelectedItem="{Binding Colaborador.Tipo}">
+                        <Picker.ItemDisplayBinding>
+                            <Binding Converter="{StaticResource EnumDisplay}" />
+                        </Picker.ItemDisplayBinding>
+                    </Picker>
+
+                    <Label Text="Vínculo" />
+                    <Picker ItemsSource="{Binding ColaboradorVinculos}"
+                            SelectedItem="{Binding Colaborador.Vinculo}">
+                        <Picker.ItemDisplayBinding>
+                            <Binding Converter="{StaticResource EnumDisplay}" />
+                        </Picker.ItemDisplayBinding>
+                    </Picker>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- AÇÕES -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                <Button Text="Cancelar"
+                        Command="{Binding CancelCommand}"
+                        Style="{StaticResource ButtonSecondary}"
+                        HeightRequest="50" />
+
+                <Button Grid.Column="1"
+                        Text="Salvar"
+                        Command="{Binding SaveColaboradorCommand}"
+                        Style="{StaticResource ButtonPrimary}"
+                        HeightRequest="50" />
+            </Grid>
+
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                               IsRunning="{Binding IsBusy}"
+                               HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -3,6 +3,7 @@ using AcademiaDoZe.Presentation.AppMaui.Views;
 using AcademiaDoZe.Presentation.AppMaui.Configuration;
 using Microsoft.Extensions.Logging;
 
+
 namespace AcademiaDoZe.Presentation.AppMaui;
 
 public static class MauiProgram
@@ -27,12 +28,20 @@ public static class MauiProgram
         builder.Services.AddTransient<DashboardListViewModel>();
         builder.Services.AddTransient<LogradouroListViewModel>();
         builder.Services.AddTransient<LogradouroViewModel>();
+        builder.Services.AddTransient<ColaboradorListViewModel>();
+        builder.Services.AddTransient<ColaboradorViewModel>();
+        builder.Services.AddTransient<AlunoListViewModel>();
+        builder.Services.AddTransient<AlunoViewModel>();
 
         // Registrar Views
         builder.Services.AddTransient<DashboardListPage>();
         builder.Services.AddTransient<LogradouroListPage>();
         builder.Services.AddTransient<LogradouroPage>();
         builder.Services.AddTransient<ConfigPage>();
+        builder.Services.AddTransient<ColaboradorListPage>();
+        builder.Services.AddTransient<ColaboradorPage>();
+        builder.Services.AddTransient<AlunoListPage>();
+        builder.Services.AddTransient<AlunoPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();
