@@ -6,11 +6,17 @@ namespace AcademiaDoZe.Presentation.AppMaui.Views;
 
 public partial class ConfigPage : ContentPage
 {
+    private bool _isCarregando = true;
     public ConfigPage()
     {
         InitializeComponent();
+
         CarregarTema();
         CarregarBanco();
+
+        _isCarregando = false;
+
+        TemaPicker.SelectedIndexChanged += OnTemaSelectedIndexChanged;
     }
 
     #region Tema
@@ -321,7 +327,23 @@ public partial class ConfigPage : ContentPage
 
         await Shell.Current.GoToAsync("//dashboard");
     }
+    private void OnTemaSelectedIndexChanged(object? sender, EventArgs e)
+    {
+        if (_isCarregando || TemaPicker.SelectedIndex < 0)
+            return;
 
+        string selectedTheme = TemaPicker.SelectedIndex switch
+        {
+            0 => "light",
+            1 => "dark",
+            _ => "system"
+        };
+
+        Preferences.Set("Tema", selectedTheme);
+
+        WeakReferenceMessenger.Default.Send(
+            new TemaPreferencesUpdatedMessage("TemaAlterado"));
+    }
     #endregion
 
     private async void OnCancelarClicked(object? sender, EventArgs e)

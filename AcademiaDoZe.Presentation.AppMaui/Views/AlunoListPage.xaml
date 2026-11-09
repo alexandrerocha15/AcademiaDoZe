@@ -19,13 +19,15 @@
             <Grid ColumnDefinitions="110,*,Auto" ColumnSpacing="8">
                 <Picker
                     ItemsSource="{Binding FilterTypes}"
-                    SelectedItem="{Binding SelectedFilterType}" />
+                    SelectedItem="{Binding SelectedFilterType}"
+                    SelectedIndexChanged="OnFilterChanged" />
 
                 <Entry
                     Grid.Column="1"
                     Text="{Binding SearchText}"
                     Placeholder="Buscar aluno..."
-                    ReturnCommand="{Binding SearchAlunosCommand}" />
+                    ReturnCommand="{Binding SearchAlunosCommand}"
+                    TextChanged="OnSearchTextChanged" />
 
                 <Button
                     Grid.Column="2"

@@ -110,14 +110,8 @@ public partial class ColaboradorListViewModel : BaseViewModel
             {
                 var cpf = new string(SearchText.Where(char.IsDigit).ToArray());
 
-                if (cpf.Length != 11)
-                {
-                    await Shell.Current.DisplayAlertAsync("Validação", "Informe os 11 dígitos do CPF.", "OK");
-                    return;
-                }
-
-                var colaborador = await _colaboradorService.ObterPorCpfAsync(cpf, cts.Token);
-                if (colaborador != null) resultados = [colaborador];
+                resultados = await _colaboradorService
+                    .BuscarPorCpfParcialAsync(cpf, cts.Token);
             }
             else if (SelectedFilterType == "Id")
             {

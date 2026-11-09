@@ -61,14 +61,29 @@
                            MaxLength="15" />
 
                     <Label Text="E-mail" />
-                    <Entry Text="{Binding Aluno.Email}"
+                    <Entry x:Name="EmailEntry"
+                           Text="{Binding Aluno.Email}"
                            Keyboard="Email"
-                           Placeholder="exemplo@email.com" />
+                           Placeholder="exemplo@email.com"
+                           Unfocused="OnEmailUnfocused" />
+                    
+                    <Label x:Name="EmailErrorLabel"
+                           Text="Formato de e-mail inválido. Use nome@dominio.com"
+                           TextColor="Red"
+                           FontSize="12"
+                           IsVisible="False" />
 
                     <Label Text="Senha" />
-                    <Entry Text="{Binding Aluno.Senha}"
+                    <Entry x:Name="SenhaEntry"
+                           Text="{Binding Aluno.Senha}"
                            IsPassword="True"
                            Placeholder="Digite a senha" />
+                    
+                    <HorizontalStackLayout Spacing="10">
+                        <Switch Toggled="OnShowPasswordToggled" />
+                        <Label Text="Mostrar senha"
+                               VerticalOptions="Center" />
+                    </HorizontalStackLayout>
 
                     <Label Text="Deixe em branco para manter a senha atual."
                            FontSize="12"
@@ -81,10 +96,16 @@
 
                     <Label Text="Foto" />
                     <Image Source="{Binding Aluno.Foto, Converter={StaticResource FotoConverter}}"
-                           WidthRequest="120"
-                           HeightRequest="120"
-                           Aspect="AspectFill"
-                           HorizontalOptions="Start" />
+                            WidthRequest="120"
+                            HeightRequest="120"
+                            Aspect="AspectFill"
+                            HorizontalOptions="Start">
+                         <Image.GestureRecognizers>
+                             <TapGestureRecognizer
+                                 Command="{Binding SelecionarFotoCommand}"
+                                 NumberOfTapsRequired="1" />
+                         </Image.GestureRecognizers>
+                     </Image>
 
                     <Button Text="Selecionar Imagem"
                             Command="{Binding SelecionarFotoCommand}"
