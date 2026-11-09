@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
+    xmlns:converters="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Converters"
+    x:Class="AcademiaDoZe.Presentation.AppMaui.Views.MatriculaPage"
+    x:DataType="vm:MatriculaViewModel"
+    Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <converters:FotoToImageSourceConverter
+            x:Key="FotoConverter" />
+        <converters:DateOnlyToDateTimeConverter
+            x:Key="DateOnlyConverter" />
+        <converters:EnumDisplayConverter
+            x:Key="EnumDisplay" />
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="16" Padding="15,10,15,25">
+
+            <!-- Aluno -->
+            <Border Style="{StaticResource CardBorder}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Aluno da Matrícula"
+                           Style="{StaticResource SubHeadline}" />
+
+                    <Label Text="CPF do Aluno" />
+
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                        <Entry
+                            Text="{Binding Matricula.AlunoMatricula.Cpf}"
+                            Placeholder="000.000.000-00"
+                            Keyboard="Numeric"
+                            MaxLength="14"
+                            ReturnCommand="{Binding SearchByCpfCommand}" />
+
+                        <Button
+                            Grid.Column="1"
+                            Text="Buscar"
+                            Command="{Binding SearchByCpfCommand}"
+                            Style="{StaticResource ButtonPrimary}" />
+                    </Grid>
+
+                    <Label
+                        Text="Busque um aluno cadastrado pelo CPF."
+                        IsVisible="{Binding HasNoAlunoVinculado}" />
+
+                    <Grid
+                        ColumnDefinitions="Auto,*"
+                        ColumnSpacing="12"
+                        IsVisible="{Binding HasAlunoVinculado}">
+
+                        <Image
+                            Source="{Binding Matricula.AlunoMatricula.Foto, Converter={StaticResource FotoConverter}}"
+                            WidthRequest="70"
+                            HeightRequest="70"
+                            Aspect="AspectFill" />
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label
+                                Text="{Binding Matricula.AlunoMatricula.Nome}"
+                                FontAttributes="Bold"
+                                FontSize="16" />
+
+                            <Label
+                                Text="{Binding Matricula.AlunoMatricula.Cpf, StringFormat='CPF: {0}'}" />
+
+                            <Label
+                                Text="{Binding Matricula.AlunoMatricula.DataNascimento, StringFormat='Nascimento: {0:dd/MM/yyyy}'}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Plano -->
+            <Border Style="{StaticResource CardBorder}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Plano e Vigência"
+                           Style="{StaticResource SubHeadline}" />
+
+                    <Label Text="Tipo de Plano" />
+
+                    <Picker
+                        x:Name="PlanoPicker"
+                        ItemsSource="{Binding PlanoTipos}"
+                        SelectedItem="{Binding Matricula.Plano}"
+                        SelectedIndexChanged="OnPlanoChanged"
+                        ItemDisplayBinding="{Binding Converter={StaticResource EnumDisplay}}" />
+
+                    <Label Text="Data de Início" />
+
+                    <DatePicker
+                        x:Name="InicioDatePicker"
+                        Format="dd/MM/yyyy"
+                        Date="{Binding Matricula.DataInicio, Converter={StaticResource DateOnlyConverter}, Mode=TwoWay}"
+                        DateSelected="OnInicioChanged" />
+
+                    <Label Text="Data de Término (automática)" />
+
+                    <DatePicker
+                        x:Name="FimDatePicker"
+                        Format="dd/MM/yyyy"
+                        Date="{Binding Matricula.DataFim, Converter={StaticResource DateOnlyConverter}}"
+                        IsEnabled="False" />
+
+                    <Label Text="Objetivo da Matrícula" />
+
+                    <Entry
+                        Text="{Binding Matricula.Objetivo}"
+                        Placeholder="Ex.: Hipertrofia, condicionamento..."
+                        MaxLength="200" />
+                </VerticalStackLayout>
+            </Border>
+            
+            <!-- Restrições médicas -->
+            <Border Style="{StaticResource CardBorder}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Restrições Médicas"
+                           Style="{StaticResource SubHeadline}" />
+
+                    <Label Text="Selecione todas as restrições aplicáveis."
+                           FontSize="12" />
+
+                    <VerticalStackLayout Spacing="6">
+                        <CheckBox x:Name="DiabetesCheck"
+                                  CheckedChanged="OnRestricaoChanged" />
+                        <Label Text="Diabetes" />
+
+                        <CheckBox x:Name="PressaoAltaCheck"
+                                  CheckedChanged="OnRestricaoChanged" />
+                        <Label Text="Pressão alta" />
+
+                        <CheckBox x:Name="LabirintiteCheck"
+                                  CheckedChanged="OnRestricaoChanged" />
+                        <Label Text="Labirintite" />
+
+                        <CheckBox x:Name="AlergiasCheck"
+                                  CheckedChanged="OnRestricaoChanged" />
+                        <Label Text="Alergias" />
+
+                        <CheckBox x:Name="RespiratoriosCheck"
+                                  CheckedChanged="OnRestricaoChanged" />
+                        <Label Text="Problemas respiratórios" />
+
+                        <CheckBox x:Name="RemedioCheck"
+                                  CheckedChanged="OnRestricaoChanged" />
+                        <Label Text="Remédio contínuo" />
+                    </VerticalStackLayout>
+
+                    <Label Text="Observações" />
+
+                    <Editor
+                        Text="{Binding Matricula.ObservacoesRestricoes}"
+                        Placeholder="Descreva as restrições médicas..."
+                        AutoSize="TextChanges"
+                        MinimumHeightRequest="90" />
+
+                    <Label Text="Laudo Médico (PDF)" />
+
+                    <Label Text="{Binding NomeLaudo}"
+                           FontSize="12" />
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Button Text="Anexar Laudo"
+                                Command="{Binding SelecionarLaudoCommand}"
+                                Style="{StaticResource ButtonPrimary}" />
+
+                        <Button Text="Remover"
+                                Command="{Binding RemoverLaudoCommand}"
+                                IsEnabled="{Binding TemLaudo}"
+                                Style="{StaticResource ButtonSecondary}" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+            
+            <!-- Ações -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                <Button
+                    Text="Cancelar"
+                    Command="{Binding CancelCommand}"
+                    Style="{StaticResource ButtonSecondary}" />
+
+                <Button
+                    Grid.Column="1"
+                    Text="Salvar"
+                    Command="{Binding SaveMatriculaCommand}"
+                    Style="{StaticResource ButtonPrimary}" />
+            </Grid>
+
+            <ActivityIndicator
+                IsVisible="{Binding IsBusy}"
+                IsRunning="{Binding IsBusy}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
