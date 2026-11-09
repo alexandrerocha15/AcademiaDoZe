@@ -46,13 +46,15 @@
         <Border Grid.Row="0" Style="{StaticResource CardBorder}" Padding="10">
             <Grid ColumnDefinitions="110,*,Auto" ColumnSpacing="8">
                 <Picker Grid.Column="0"
-                        ItemsSource="{Binding FilterTypes}"
-                        SelectedItem="{Binding SelectedFilterType}" />
+                    ItemsSource="{Binding FilterTypes}"
+                    SelectedItem="{Binding SelectedFilterType}"
+                    SelectedIndexChanged="OnFilterChanged" />
 
                 <Entry Grid.Column="1"
-                       Text="{Binding SearchText}"
-                       Placeholder="Buscar..."
-                       ReturnCommand="{Binding SearchColaboradoresCommand}" />
+                    Text="{Binding SearchText}"
+                    TextChanged="OnSearchTextChanged"
+                    Placeholder="Buscar..."
+                    ReturnCommand="{Binding SearchColaboradoresCommand}" />
 
                 <Button Grid.Column="2"
                         Text="Buscar"

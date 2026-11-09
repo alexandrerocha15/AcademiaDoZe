@@ -117,22 +117,16 @@ public partial class AlunoListViewModel : BaseViewModel
             {
                 var cpf = new string(SearchText.Where(char.IsDigit).ToArray());
 
-                if (cpf.Length != 11)
-                {
-                    await Shell.Current.DisplayAlertAsync(
-                        "Validação", "Informe os 11 dígitos do CPF.", "OK");
-                    return;
-                }
+                var todos = await _alunoService.ObterTodosAsync(cts.Token);
 
-                var aluno = await _alunoService.ObterPorCpfAsync(cpf, cts.Token);
-                if (aluno != null) resultados = [aluno];
+                resultados = todos.Where(a =>
+                    new string((a.Cpf ?? string.Empty).Where(char.IsDigit).ToArray())
+                        .Contains(cpf));
             }
             else if (SelectedFilterType == "Id")
             {
                 if (!int.TryParse(SearchText.Trim(), out int id) || id <= 0)
                 {
-                    await Shell.Current.DisplayAlertAsync(
-                        "Validação", "Informe um ID válido.", "OK");
                     return;
                 }
 

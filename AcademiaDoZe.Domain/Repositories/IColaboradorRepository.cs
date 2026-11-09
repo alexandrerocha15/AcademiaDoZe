@@ -38,4 +38,8 @@ public interface IColaboradorRepository : IRepository<Colaborador>
         int id,
         Senha novaSenha,
         CancellationToken cancellationToken = default);
+
+    Task<IEnumerable<Colaborador>> BuscarPorCpfParcial(
+        string cpfParcial,
+        CancellationToken cancellationToken = default);
 }

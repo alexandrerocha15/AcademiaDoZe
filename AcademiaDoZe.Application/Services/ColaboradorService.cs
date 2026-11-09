@@ -271,4 +271,19 @@ public class ColaboradorService : IColaboradorService
 
         return atualizado.ToDto(logradouro);
     }
+    public async Task<IEnumerable<ColaboradorDto>> BuscarPorCpfParcialAsync(
+    string cpfParcial,
+    CancellationToken cancellationToken = default)
+    {
+        var digitos = new string(
+            (cpfParcial ?? string.Empty).Where(char.IsDigit).ToArray());
+
+        if (string.IsNullOrEmpty(digitos))
+            return [];
+
+        var colaboradores = await _repoFactory()
+            .BuscarPorCpfParcial(digitos, cancellationToken);
+
+        return [.. colaboradores.Select(c => c.ToDto())];
+    }
 }

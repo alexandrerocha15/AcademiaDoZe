@@ -461,4 +461,34 @@ public class ColaboradorRepository : BaseRepository, IColaboradorRepository
                 ex);
         }
     }
+    public async Task<IEnumerable<Colaborador>> BuscarPorCpfParcial(
+    string cpfParcial,
+    CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            string query = $"{BaseSelectQuery} WHERE c.cpf LIKE @Cpf ORDER BY c.nome";
+
+            await using var command = await CreateCommandAsync(query, cancellationToken);
+            command.AddParameter("@Cpf", $"%{cpfParcial}%", DbType.String);
+
+            await using var reader = await command.ExecuteReaderAsync(cancellationToken);
+
+            var colaboradores = new List<Colaborador>();
+
+            while (await reader.ReadAsync(cancellationToken))
+            {
+                colaboradores.Add(Map(reader));
+            }
+
+            return colaboradores;
+        }
+        catch (DbException ex)
+        {
+            throw new InfrastructureException(
+                "ERRO_BUSCAR_CPF_PARCIAL",
+                $"Erro ao buscar colaboradores por CPF parcial: {ex.Message}",
+                ex);
+        }
+    }
 }

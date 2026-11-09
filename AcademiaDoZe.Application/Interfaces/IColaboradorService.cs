@@ -17,4 +17,5 @@ public interface IColaboradorService
     Task<bool> CpfJaExisteAsync(string cpf, int? id = null, CancellationToken cancellationToken = default);
     Task<bool> EmailJaExisteAsync(string email, int? id = null, CancellationToken cancellationToken = default);
     Task<bool> TrocarSenhaAsync(int id, string novaSenha, CancellationToken cancellationToken = default);
+    Task<IEnumerable<ColaboradorDto>> BuscarPorCpfParcialAsync(string cpfParcial, CancellationToken cancellationToken = default);
 }
