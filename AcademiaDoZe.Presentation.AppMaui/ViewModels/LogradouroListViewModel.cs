@@ -1,6 +1,7 @@
 using AcademiaDoZe.Application.DTOs;
 using AcademiaDoZe.Application.Interfaces;
 using CommunityToolkit.Mvvm.Input;
+using AcademiaDoZe.Presentation.AppMaui.Helpers;
 using System.Collections.ObjectModel;
 
 namespace AcademiaDoZe.Presentation.AppMaui.ViewModels;
@@ -47,7 +48,7 @@ public partial class LogradouroListViewModel : BaseViewModel
     public LogradouroListViewModel(ILogradouroService logradouroService)
     {
         _logradouroService = logradouroService;
-        Title = "Logradouros";
+        Title = LocalizationManager.Instance["strLogradouro"];
     }
 
     [RelayCommand]
@@ -60,8 +61,8 @@ public partial class LogradouroListViewModel : BaseViewModel
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Erro",
-                $"Erro ao navegar para tela de cadastro: {ex.Message}",
+                LocalizationManager.Instance["listMsg001"],
+                string.Format(LocalizationManager.Instance["strErroAoNavegarParaTelaDe"], ex.Message),
                 "OK");
         }
     }
@@ -80,7 +81,7 @@ public partial class LogradouroListViewModel : BaseViewModel
         {
             await Shell.Current.DisplayAlertAsync(
                 "Erro",
-                $"Erro ao navegar para tela de edição: {ex.Message}",
+                string.Format(LocalizationManager.Instance["strErroAoNavegarParaTelaDe055"], ex.Message),
                 "OK");
         }
     }
@@ -129,8 +130,8 @@ public partial class LogradouroListViewModel : BaseViewModel
                 if (!int.TryParse(SearchText.Trim(), out int id) || id <= 0)
                 {
                     await Shell.Current.DisplayAlertAsync(
-                        "Validação",
-                        "Para buscar por ID, informe um número inteiro positivo válido.",
+                        LocalizationManager.Instance["listMsg015"],
+                        LocalizationManager.Instance["strDigiteONomeDaRua"],
                         "OK");
 
                     return;
@@ -150,8 +151,8 @@ public partial class LogradouroListViewModel : BaseViewModel
                 if (cepLimpo.Length != 8)
                 {
                     await Shell.Current.DisplayAlertAsync(
-                        "Validação",
-                        "Para buscar por CEP, informe os 8 dígitos numéricos.",
+                        LocalizationManager.Instance["listMsg015"],
+                        LocalizationManager.Instance["strDigiteOBairro"],
                         "OK");
 
                     return;
@@ -179,15 +180,15 @@ public partial class LogradouroListViewModel : BaseViewModel
         catch (OperationCanceledException)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Tempo Esgotado",
-                "A busca expirou. Verifique a conexão com o banco.",
+                LocalizationManager.Instance["listMsg017"],
+                LocalizationManager.Instance["strDigiteACidade"],
                 "OK");
         }
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Erro",
-                $"Erro ao buscar logradouros: {ex.Message}",
+                LocalizationManager.Instance["listMsg001"],
+                string.Format(LocalizationManager.Instance["strErroAoBuscarLogradouros0"], ex.Message),
                 "OK");
         }
         finally
@@ -234,15 +235,15 @@ public partial class LogradouroListViewModel : BaseViewModel
         catch (OperationCanceledException)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Tempo Esgotado",
-                "O carregamento dos logradouros expirou. Verifique a conexão.",
+                LocalizationManager.Instance["listMsg017"],
+                LocalizationManager.Instance["strDigiteOEstado"],
                 "OK");
         }
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Erro",
-                $"Erro ao carregar logradouros: {ex.Message}",
+                LocalizationManager.Instance["listMsg001"],
+                string.Format(LocalizationManager.Instance["strErroAoCarregarLogradouros0"], ex.Message),
                 "OK");
         }
         finally
@@ -259,8 +260,8 @@ public partial class LogradouroListViewModel : BaseViewModel
             return;
 
         bool confirm = await Shell.Current.DisplayAlertAsync(
-            "Confirmar Exclusão",
-            $"Deseja realmente excluir o logradouro {logradouro.Nome}?",
+            LocalizationManager.Instance["listMsg004"],
+            string.Format(LocalizationManager.Instance["strDesejaRealmenteExcluirOLogradouro0"], logradouro.Nome),
             "Sim",
             "Não");
 
@@ -284,23 +285,23 @@ public partial class LogradouroListViewModel : BaseViewModel
                 Logradouros.Remove(logradouro);
 
                 await Shell.Current.DisplayAlertAsync(
-                    "Sucesso",
-                    "Logradouro excluído com sucesso!",
+                    LocalizationManager.Instance["listMsg008"],
+                    LocalizationManager.Instance["strDigiteOPais"],
                     "OK");
             }
             else
             {
                 await Shell.Current.DisplayAlertAsync(
-                    "Erro",
-                    "Não foi possível excluir o logradouro.",
+                    LocalizationManager.Instance["listMsg001"],
+                    LocalizationManager.Instance["strBuscarMatricula"],
                     "OK");
             }
         }
         catch (OperationCanceledException)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Tempo Esgotado",
-                "A exclusão do logradouro expirou. Verifique a conexão.",
+                LocalizationManager.Instance["listMsg017"],
+                LocalizationManager.Instance["strNenhumaMatriculaEncontrada"],
                 "OK");
         }
         catch (Exception ex)
@@ -316,15 +317,15 @@ public partial class LogradouroListViewModel : BaseViewModel
                     StringComparison.OrdinalIgnoreCase))
             {
                 await Shell.Current.DisplayAlertAsync(
-                    "Não Permitido",
-                    "Este logradouro não pode ser excluído pois está vinculado a alunos ou colaboradores cadastrados.",
+                    LocalizationManager.Instance["strNovaMatricula"],
+                    LocalizationManager.Instance["strAlunoDaMatricula"],
                     "OK");
             }
             else
             {
                 await Shell.Current.DisplayAlertAsync(
-                    "Erro",
-                    $"Erro ao excluir logradouro: {ex.Message}",
+                    LocalizationManager.Instance["listMsg001"],
+                    string.Format(LocalizationManager.Instance["strErroAoExcluirLogradouro0"], ex.Message),
                     "OK");
             }
         }

@@ -2,6 +2,7 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helpers="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Helpers"
     xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
     xmlns:converters="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Converters"
     x:Class="AcademiaDoZe.Presentation.AppMaui.Views.MatriculaPage"
@@ -23,10 +24,10 @@
             <!-- Aluno -->
             <Border Style="{StaticResource CardBorder}">
                 <VerticalStackLayout Spacing="12">
-                    <Label Text="Aluno da Matrícula"
+                    <Label Text="{helpers:Translate strAlunoDaMatricula}"
                            Style="{StaticResource SubHeadline}" />
 
-                    <Label Text="CPF do Aluno" />
+                    <Label Text="{helpers:Translate strCPFDoAluno}" />
 
                     <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
                         <Entry
@@ -38,13 +39,13 @@
 
                         <Button
                             Grid.Column="1"
-                            Text="Buscar"
+                            Text="{helpers:Translate strBuscar001}"
                             Command="{Binding SearchByCpfCommand}"
                             Style="{StaticResource ButtonPrimary}" />
                     </Grid>
 
                     <Label
-                        Text="Busque um aluno cadastrado pelo CPF."
+                        Text="{helpers:Translate strBusqueUmAlunoCadastradoPeloCPF}"
                         IsVisible="{Binding HasNoAlunoVinculado}" />
 
                     <Grid
@@ -77,10 +78,10 @@
             <!-- Plano -->
             <Border Style="{StaticResource CardBorder}">
                 <VerticalStackLayout Spacing="12">
-                    <Label Text="Plano e Vigência"
+                    <Label Text="{helpers:Translate strPlanoEVigencia}"
                            Style="{StaticResource SubHeadline}" />
 
-                    <Label Text="Tipo de Plano" />
+                    <Label Text="{helpers:Translate strTipoDePlano}" />
 
                     <Picker
                         x:Name="PlanoPicker"
@@ -89,7 +90,7 @@
                         SelectedIndexChanged="OnPlanoChanged"
                         ItemDisplayBinding="{Binding Converter={StaticResource EnumDisplay}}" />
 
-                    <Label Text="Data de Início" />
+                    <Label Text="{helpers:Translate strDataDeInicio}" />
 
                     <DatePicker
                         x:Name="InicioDatePicker"
@@ -97,7 +98,7 @@
                         Date="{Binding Matricula.DataInicio, Converter={StaticResource DateOnlyConverter}, Mode=TwoWay}"
                         DateSelected="OnInicioChanged" />
 
-                    <Label Text="Data de Término (automática)" />
+                    <Label Text="{helpers:Translate strDataDeTerminoAutomatica}" />
 
                     <DatePicker
                         x:Name="FimDatePicker"
@@ -105,11 +106,11 @@
                         Date="{Binding Matricula.DataFim, Converter={StaticResource DateOnlyConverter}}"
                         IsEnabled="False" />
 
-                    <Label Text="Objetivo da Matrícula" />
+                    <Label Text="{helpers:Translate strObjetivoDaMatricula}" />
 
                     <Entry
                         Text="{Binding Matricula.Objetivo}"
-                        Placeholder="Ex.: Hipertrofia, condicionamento..."
+                        Placeholder="{helpers:Translate strExHipertrofiaCondicionamento}"
                         MaxLength="200" />
                 </VerticalStackLayout>
             </Border>
@@ -117,57 +118,57 @@
             <!-- Restrições médicas -->
             <Border Style="{StaticResource CardBorder}">
                 <VerticalStackLayout Spacing="12">
-                    <Label Text="Restrições Médicas"
+                    <Label Text="{helpers:Translate strRestricoesMedicas}"
                            Style="{StaticResource SubHeadline}" />
 
-                    <Label Text="Selecione todas as restrições aplicáveis."
+                    <Label Text="{helpers:Translate strSelecioneTodasAsRestricoesAplicaveis}"
                            FontSize="12" />
 
                     <VerticalStackLayout Spacing="6">
                         <CheckBox x:Name="DiabetesCheck"
                                   CheckedChanged="OnRestricaoChanged" />
-                        <Label Text="Diabetes" />
+                        <Label Text="{helpers:Translate strDiabetes}" />
 
                         <CheckBox x:Name="PressaoAltaCheck"
                                   CheckedChanged="OnRestricaoChanged" />
-                        <Label Text="Pressão alta" />
+                        <Label Text="{helpers:Translate strPressaoAlta}" />
 
                         <CheckBox x:Name="LabirintiteCheck"
                                   CheckedChanged="OnRestricaoChanged" />
-                        <Label Text="Labirintite" />
+                        <Label Text="{helpers:Translate strLabirintite}" />
 
                         <CheckBox x:Name="AlergiasCheck"
                                   CheckedChanged="OnRestricaoChanged" />
-                        <Label Text="Alergias" />
+                        <Label Text="{helpers:Translate strAlergias}" />
 
                         <CheckBox x:Name="RespiratoriosCheck"
                                   CheckedChanged="OnRestricaoChanged" />
-                        <Label Text="Problemas respiratórios" />
+                        <Label Text="{helpers:Translate strProblemasRespiratorios}" />
 
                         <CheckBox x:Name="RemedioCheck"
                                   CheckedChanged="OnRestricaoChanged" />
-                        <Label Text="Remédio contínuo" />
+                        <Label Text="{helpers:Translate strRemedioContinuo}" />
                     </VerticalStackLayout>
 
-                    <Label Text="Observações" />
+                    <Label Text="{helpers:Translate strObservacoes}" />
 
                     <Editor
                         Text="{Binding Matricula.ObservacoesRestricoes}"
-                        Placeholder="Descreva as restrições médicas..."
+                        Placeholder="{helpers:Translate strDescrevaAsRestricoesMedicas}"
                         AutoSize="TextChanges"
                         MinimumHeightRequest="90" />
 
-                    <Label Text="Laudo Médico (PDF)" />
+                    <Label Text="{helpers:Translate strLaudoMedicoPDF}" />
 
                     <Label Text="{Binding NomeLaudo}"
                            FontSize="12" />
 
                     <HorizontalStackLayout Spacing="10">
-                        <Button Text="Anexar Laudo"
+                        <Button Text="{helpers:Translate strAnexarLaudo}"
                                 Command="{Binding SelecionarLaudoCommand}"
                                 Style="{StaticResource ButtonPrimary}" />
 
-                        <Button Text="Remover"
+                        <Button Text="{helpers:Translate strRemover}"
                                 Command="{Binding RemoverLaudoCommand}"
                                 IsEnabled="{Binding TemLaudo}"
                                 Style="{StaticResource ButtonSecondary}" />
@@ -178,13 +179,13 @@
             <!-- Ações -->
             <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
                 <Button
-                    Text="Cancelar"
+                    Text="{helpers:Translate strCancelar004}"
                     Command="{Binding CancelCommand}"
                     Style="{StaticResource ButtonSecondary}" />
 
                 <Button
                     Grid.Column="1"
-                    Text="Salvar"
+                    Text="{helpers:Translate strSalvar005}"
                     Command="{Binding SaveMatriculaCommand}"
                     Style="{StaticResource ButtonPrimary}" />
             </Grid>

@@ -4,10 +4,10 @@
     x:Class="AcademiaDoZe.Presentation.AppMaui.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:views="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Views"
+    xmlns:views="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Views"    xmlns:helpers="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Helpers"
     Title="Academia do Zé">
 
-    <FlyoutItem Title="Dashboard">
+    <FlyoutItem Title="{helpers:Translate strDashboard}">
         <FlyoutItem.Icon>
             <FontImageSource
                 FontFamily="MaterialIcons"
@@ -19,7 +19,7 @@
             Route="dashboard" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Logradouros">
+    <FlyoutItem Title="{helpers:Translate strLogradouro}">
         <FlyoutItem.Icon>
             <FontImageSource
                 FontFamily="MaterialIcons"
@@ -31,7 +31,7 @@
             Route="logradouros" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Configurações">
+    <FlyoutItem Title="{helpers:Translate strConfiguracao}">
         <FlyoutItem.Icon>
             <FontImageSource
                 FontFamily="MaterialIcons"
@@ -43,7 +43,7 @@
             Route="configuracoes" />
     </FlyoutItem>
         
-    <FlyoutItem Title="Colaboradores">
+    <FlyoutItem Title="{helpers:Translate strColaborador}">
         <FlyoutItem.Icon>
             <FontImageSource FontFamily="MaterialIcons" Glyph="&#xea67;" />
         </FlyoutItem.Icon>
@@ -52,7 +52,7 @@
             Route="colaboradores" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Alunos">
+    <FlyoutItem Title="{helpers:Translate strAluno}">
         <FlyoutItem.Icon>
             <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe7ef;" />
         </FlyoutItem.Icon>
@@ -61,7 +61,7 @@
             Route="alunos" />
     </FlyoutItem>
         
-    <FlyoutItem Title="Matrículas">
+    <FlyoutItem Title="{helpers:Translate strMatricula}">
         <FlyoutItem.Icon>
             <FontImageSource
                 FontFamily="MaterialIcons"

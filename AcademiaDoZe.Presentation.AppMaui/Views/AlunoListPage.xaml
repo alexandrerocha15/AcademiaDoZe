@@ -2,6 +2,7 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helpers="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Helpers"
     xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
     xmlns:dto="clr-namespace:AcademiaDoZe.Application.DTOs;assembly=AcademiaDoZe.Application"
     xmlns:converters="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Converters"
@@ -25,13 +26,13 @@
                 <Entry
                     Grid.Column="1"
                     Text="{Binding SearchText}"
-                    Placeholder="Buscar aluno..."
+                    Placeholder="{helpers:Translate strBuscarAluno}"
                     ReturnCommand="{Binding SearchAlunosCommand}"
                     TextChanged="OnSearchTextChanged" />
 
                 <Button
                     Grid.Column="2"
-                    Text="Buscar"
+                    Text="{helpers:Translate strBuscar}"
                     Command="{Binding SearchAlunosCommand}"
                     Style="{StaticResource ButtonPrimary}" />
             </Grid>
@@ -80,14 +81,28 @@
                                         <Label
                                             Text="{Binding Cpf, StringFormat='CPF: {0}'}" />
 
-                                        <Label
-                                            Text="{Binding Telefone, StringFormat='Telefone: {0}'}" />
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{helpers:Translate strTelefone}" />
+                                                    <Span Text=": " />
+                                                    <Span Text="{Binding Telefone}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
 
                                         <Label
                                             Text="{Binding Email, StringFormat='E-mail: {0}'}" />
 
-                                        <Label
-                                            Text="{Binding DataNascimento, StringFormat='Nascimento: {0:dd/MM/yyyy}'}" />
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{helpers:Translate strNascimento}" />
+                                                    <Span Text=": " />
+                                                    <Span Text="{Binding DataNascimento, StringFormat='{0:d}'}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
                                     </VerticalStackLayout>
 
                                     <VerticalStackLayout
@@ -101,12 +116,12 @@
                                             Aspect="AspectFill" />
 
                                         <Button
-                                            Text="Editar"
+                                            Text="{helpers:Translate strEditar}"
                                             Clicked="OnEditButtonClicked"
                                             Style="{StaticResource ButtonSmall}" />
 
                                         <Button
-                                            Text="Excluir"
+                                            Text="{helpers:Translate strExcluir}"
                                             Clicked="OnDeleteButtonClicked"
                                             Style="{StaticResource ButtonDanger}" />
 
@@ -118,7 +133,7 @@
 
                     <CollectionView.EmptyView>
                         <Label
-                            Text="Nenhum aluno encontrado."
+                            Text="{helpers:Translate strNenhumAluno}"
                             Padding="20"
                             HorizontalTextAlignment="Center" />
                     </CollectionView.EmptyView>

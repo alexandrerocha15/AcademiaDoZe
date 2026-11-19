@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AcademiaDoZe.Presentation.AppMaui.Views.DashboardListPage"
              xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
+             xmlns:helpers="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Helpers"
+             x:Class="AcademiaDoZe.Presentation.AppMaui.Views.DashboardListPage"
              x:DataType="vm:DashboardListViewModel"
              Title="{Binding Title}">
 
@@ -17,10 +18,10 @@
                        HeightRequest="200"
                        WidthRequest="200"/>
 
-                <Label Text="Academia do Zé"
+                <Label Text="{helpers:Translate strTitulo}"
                        Style="{StaticResource Headline}"/>
 
-                <Label Text="Sistema de Gerenciamento"
+                <Label Text="{helpers:Translate strSubTitulo}"
                        Style="{StaticResource SubHeadline}"/>
             </StackLayout>
 
@@ -42,7 +43,7 @@
                     <StackLayout Spacing="10">
                         <Label Text="{Binding TotalLogradouros}"
                                Style="{StaticResource SubHeadline}"/>
-                        <Label Text="Logradouros"
+                        <Label Text="{helpers:Translate strLogradouro}"
                                HorizontalTextAlignment="Center"/>
                     </StackLayout>
                 </Border>
@@ -58,7 +59,7 @@
                     <StackLayout Spacing="10">
                         <Label Text="{Binding TotalAlunos}"
                                Style="{StaticResource SubHeadline}"/>
-                        <Label Text="Alunos"
+                        <Label Text="{helpers:Translate strAluno}"
                                HorizontalTextAlignment="Center"/>
                     </StackLayout>
                 </Border>
@@ -74,7 +75,7 @@
                     <StackLayout Spacing="10">
                         <Label Text="{Binding TotalColaboradores}"
                                Style="{StaticResource SubHeadline}"/>
-                        <Label Text="Colaboradores"
+                        <Label Text="{helpers:Translate strColaborador}"
                                HorizontalTextAlignment="Center"/>
                     </StackLayout>
                 </Border>
@@ -90,7 +91,7 @@
                     <StackLayout Spacing="10">
                         <Label Text="{Binding TotalMatriculas}"
                                Style="{StaticResource SubHeadline}"/>
-                        <Label Text="Matrículas"
+                        <Label Text="{helpers:Translate strMatricula}"
                                HorizontalTextAlignment="Center"/>
                     </StackLayout>
                 </Border>

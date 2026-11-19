@@ -1,6 +1,7 @@
 using AcademiaDoZe.Application.DTOs;
 using AcademiaDoZe.Application.Interfaces;
 using CommunityToolkit.Mvvm.Input;
+using AcademiaDoZe.Presentation.AppMaui.Helpers;
 using System.Collections.ObjectModel;
 
 namespace AcademiaDoZe.Presentation.AppMaui.ViewModels;
@@ -10,7 +11,7 @@ public partial class MatriculaListViewModel : BaseViewModel
     private readonly IMatriculaService _matriculaService;
 
     public ObservableCollection<string> FilterTypes { get; } =
-        ["Id", "Id Aluno", "Ativas", "Vencendo em dias"];
+        ["Id", LocalizationManager.Instance["strIdAlunoFiltro"], LocalizationManager.Instance["strAtivasFiltro"], LocalizationManager.Instance["strVencendoFiltro"]];
 
     private string _searchText = string.Empty;
     public string SearchText
@@ -19,7 +20,7 @@ public partial class MatriculaListViewModel : BaseViewModel
         set => SetProperty(ref _searchText, value);
     }
 
-    private string _selectedFilterType = "Ativas";
+    private string _selectedFilterType = LocalizationManager.Instance["strAtivasFiltro"];
     public string SelectedFilterType
     {
         get => _selectedFilterType;
@@ -31,7 +32,7 @@ public partial class MatriculaListViewModel : BaseViewModel
     public MatriculaListViewModel(IMatriculaService matriculaService)
     {
         _matriculaService = matriculaService;
-        Title = "Matrículas";
+        Title = LocalizationManager.Instance["strMatricula"];
     }
 
     [RelayCommand]
@@ -66,7 +67,7 @@ public partial class MatriculaListViewModel : BaseViewModel
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync("Erro",
-                $"Erro ao carregar matrículas: {ex.Message}", "OK");
+                string.Format(LocalizationManager.Instance["strLogradouroID0"], ex.Message), "OK");
         }
         finally
         {
@@ -99,7 +100,7 @@ public partial class MatriculaListViewModel : BaseViewModel
 
             if (string.IsNullOrWhiteSpace(texto))
             {
-                resultados = SelectedFilterType == "Ativas"
+                resultados = SelectedFilterType == FilterTypes[2]
                     ? await _matriculaService.ObterAtivasAsync(0, cts.Token)
                     : await _matriculaService.ObterTodasAsync(cts.Token);
             }
@@ -110,17 +111,17 @@ public partial class MatriculaListViewModel : BaseViewModel
                 if (matricula is not null)
                     resultados = [matricula];
             }
-            else if (SelectedFilterType == "Id Aluno" &&
+            else if (SelectedFilterType == FilterTypes[1] &&
                      int.TryParse(texto, out int alunoId))
             {
                 resultados = await _matriculaService.ObterPorAlunoIdAsync(alunoId, cts.Token);
             }
-            else if (SelectedFilterType == "Ativas" &&
+            else if (SelectedFilterType == FilterTypes[2] &&
                      int.TryParse(texto, out int idAlunoAtivo))
             {
                 resultados = await _matriculaService.ObterAtivasAsync(idAlunoAtivo, cts.Token);
             }
-            else if (SelectedFilterType == "Vencendo em dias" &&
+            else if (SelectedFilterType == FilterTypes[3] &&
                      int.TryParse(texto, out int dias))
             {
                 resultados = await _matriculaService.ObterVencendoEmDiasAsync(dias, cts.Token);
@@ -130,8 +131,8 @@ public partial class MatriculaListViewModel : BaseViewModel
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlertAsync("Erro",
-                $"Erro ao pesquisar matrículas: {ex.Message}", "OK");
+            await Shell.Current.DisplayAlertAsync(LocalizationManager.Instance["listMsg001"],
+                string.Format(LocalizationManager.Instance["strErroAoPesquisarMatriculas0"], ex.Message), "OK");
         }
         finally
         {
@@ -146,8 +147,8 @@ public partial class MatriculaListViewModel : BaseViewModel
             return;
 
         bool confirmar = await Shell.Current.DisplayAlertAsync(
-            "Excluir matrícula",
-            $"Deseja excluir a matrícula {matricula.Id}?",
+            LocalizationManager.Instance["strBuscar001"],
+            string.Format(LocalizationManager.Instance["strDesejaExcluirAMatricula0"], matricula.Id),
             "Sim", "Não");
 
         if (!confirmar)
@@ -162,13 +163,13 @@ public partial class MatriculaListViewModel : BaseViewModel
             {
                 Matriculas.Remove(matricula);
                 await Shell.Current.DisplayAlertAsync(
-                    "Sucesso", "Matrícula excluída!", "OK");
+                    LocalizationManager.Instance["listMsg008"], LocalizationManager.Instance["strEditar002"], "OK");
             }
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlertAsync("Erro",
-                $"Erro ao excluir matrícula: {ex.Message}", "OK");
+            await Shell.Current.DisplayAlertAsync(LocalizationManager.Instance["listMsg001"],
+                string.Format(LocalizationManager.Instance["strErroAoExcluirMatricula0"], ex.Message), "OK");
         }
         finally
         {

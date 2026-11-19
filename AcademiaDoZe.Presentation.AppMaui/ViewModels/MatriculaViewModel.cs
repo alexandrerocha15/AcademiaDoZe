@@ -2,6 +2,7 @@ using AcademiaDoZe.Application.DTOs;
 using AcademiaDoZe.Application.Enums;
 using AcademiaDoZe.Application.Interfaces;
 using CommunityToolkit.Mvvm.Input;
+using AcademiaDoZe.Presentation.AppMaui.Helpers;
 
 namespace AcademiaDoZe.Presentation.AppMaui.ViewModels;
 
@@ -18,7 +19,7 @@ public partial class MatriculaViewModel : BaseViewModel
     Enum.GetValues<AppMatriculaRestricoes>()
         .Where(r => r != AppMatriculaRestricoes.None);
 
-    private string _nomeLaudo = "Nenhum laudo anexado";
+    private string _nomeLaudo = LocalizationManager.Instance["strExcluir003"];
 
     public string NomeLaudo
     {
@@ -83,7 +84,7 @@ public partial class MatriculaViewModel : BaseViewModel
     {
         _matriculaService = matriculaService;
         _alunoService = alunoService;
-        Title = "Detalhes da Matrícula";
+        Title = LocalizationManager.Instance["strCancelar004"];
     }
 
     private static MatriculaDto CriarMatriculaPadrao() => new()
@@ -125,19 +126,19 @@ public partial class MatriculaViewModel : BaseViewModel
         if (MatriculaId > 0)
         {
             IsEditMode = true;
-            Title = "Editar Matrícula";
+            Title = LocalizationManager.Instance["strSalvar005"];
             await LoadMatriculaAsync();
         }
         else
         {
             IsEditMode = false;
-            Title = "Nova Matrícula";
+            Title = LocalizationManager.Instance["strRemover"];
             Matricula = CriarMatriculaPadrao();
         }
 
         NomeLaudo = Matricula.LaudoMedico is null
-            ? "Nenhum laudo anexado"
-            : "Laudo médico anexado";
+            ? LocalizationManager.Instance["strExcluir003"]
+            : LocalizationManager.Instance["strNomeRua"];
 
         OnPropertyChanged(nameof(TemLaudo));
         OnPropertyChanged(nameof(TemRestricoes));
@@ -163,7 +164,7 @@ public partial class MatriculaViewModel : BaseViewModel
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Erro", $"Erro ao carregar matrícula: {ex.Message}", "OK");
+                LocalizationManager.Instance["listMsg001"], string.Format(LocalizationManager.Instance["strErroAoCarregarMatricula0"], ex.Message), "OK");
         }
         finally
         {
@@ -181,7 +182,7 @@ public partial class MatriculaViewModel : BaseViewModel
         if (cpf.Length != 11)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Validação", "Informe os 11 dígitos do CPF.", "OK");
+                LocalizationManager.Instance["listMsg015"], LocalizationManager.Instance["vmMsg008"], "OK");
             return;
         }
 
@@ -194,7 +195,7 @@ public partial class MatriculaViewModel : BaseViewModel
             if (aluno is null)
             {
                 await Shell.Current.DisplayAlertAsync(
-                    "Aviso", "Aluno não encontrado.", "OK");
+                    LocalizationManager.Instance["vmMsg003"], LocalizationManager.Instance["vmMsg004"], "OK");
                 return;
             }
 
@@ -205,7 +206,7 @@ public partial class MatriculaViewModel : BaseViewModel
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Erro", $"Erro ao buscar aluno: {ex.Message}", "OK");
+                LocalizationManager.Instance["listMsg001"], string.Format(LocalizationManager.Instance["strErroAoBuscarAluno0"], ex.Message), "OK");
         }
         finally
         {
@@ -222,29 +223,29 @@ public partial class MatriculaViewModel : BaseViewModel
         if (!HasAlunoVinculado)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Validação", "Busque e selecione um aluno.", "OK");
+                LocalizationManager.Instance["listMsg015"], LocalizationManager.Instance["strBairro"], "OK");
             return;
         }
 
         if (string.IsNullOrWhiteSpace(Matricula.Objetivo))
         {
             await Shell.Current.DisplayAlertAsync(
-                "Validação", "Informe o objetivo da matrícula.", "OK");
+                LocalizationManager.Instance["listMsg015"], LocalizationManager.Instance["strCidade"], "OK");
             return;
         }
 
         if (Matricula.DataFim <= Matricula.DataInicio)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Validação", "A data de término deve ser posterior ao início.", "OK");
+                LocalizationManager.Instance["listMsg015"], LocalizationManager.Instance["strEstado"], "OK");
             return;
         }
 
         if (TemRestricoes && string.IsNullOrWhiteSpace(Matricula.ObservacoesRestricoes))
         {
             await Shell.Current.DisplayAlertAsync(
-                "Validação",
-                "Informe as observações sobre as restrições médicas.",
+                LocalizationManager.Instance["listMsg015"],
+                LocalizationManager.Instance["strPais"],
                 "OK");
             return;
         }
@@ -252,8 +253,8 @@ public partial class MatriculaViewModel : BaseViewModel
         if (TemRestricoes && !TemLaudo)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Validação",
-                "Anexe o laudo médico para registrar as restrições.",
+                LocalizationManager.Instance["listMsg015"],
+                LocalizationManager.Instance["strNome012"],
                 "OK");
             return;
         }
@@ -267,7 +268,7 @@ public partial class MatriculaViewModel : BaseViewModel
                 await _matriculaService.AtualizarAsync(Matricula);
 
                 await Shell.Current.DisplayAlertAsync(
-                    "Sucesso", "Matrícula atualizada!", "OK");
+                    LocalizationManager.Instance["listMsg008"], LocalizationManager.Instance["strBuscarCEP"], "OK");
             }
             else
             {
@@ -275,8 +276,8 @@ public partial class MatriculaViewModel : BaseViewModel
                     Matricula.AlunoMatricula.Id))
                 {
                     await Shell.Current.DisplayAlertAsync(
-                        "Validação",
-                        "Este aluno já possui uma matrícula ativa.",
+                        LocalizationManager.Instance["listMsg015"],
+                        LocalizationManager.Instance["strDigiteOValor"],
                         "OK");
                     return;
                 }
@@ -284,7 +285,7 @@ public partial class MatriculaViewModel : BaseViewModel
                 await _matriculaService.AdicionarAsync(Matricula);
 
                 await Shell.Current.DisplayAlertAsync(
-                    "Sucesso", "Matrícula cadastrada!", "OK");
+                    LocalizationManager.Instance["listMsg008"], LocalizationManager.Instance["strNenhumLogradouroEncontrado"], "OK");
             }
 
             await Shell.Current.GoToAsync("..");
@@ -292,7 +293,7 @@ public partial class MatriculaViewModel : BaseViewModel
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Erro", $"Erro ao salvar matrícula: {ex.Message}", "OK");
+                LocalizationManager.Instance["listMsg001"], string.Format(LocalizationManager.Instance["strErroAoSalvarMatricula0"], ex.Message), "OK");
         }
         finally
         {
@@ -313,7 +314,7 @@ public partial class MatriculaViewModel : BaseViewModel
             var arquivo = await FilePicker.Default.PickAsync(
                 new PickOptions
                 {
-                    PickerTitle = "Selecione o laudo médico",
+                    PickerTitle = LocalizationManager.Instance["strAdicionarPrimeiroLogradouro"],
                     FileTypes = FilePickerFileType.Pdf
                 });
 
@@ -336,7 +337,7 @@ public partial class MatriculaViewModel : BaseViewModel
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Erro", $"Erro ao anexar laudo: {ex.Message}", "OK");
+                LocalizationManager.Instance["listMsg001"], string.Format(LocalizationManager.Instance["strErroAoAnexarLaudo0"], ex.Message), "OK");
         }
     }
 
@@ -344,7 +345,7 @@ public partial class MatriculaViewModel : BaseViewModel
     private void RemoverLaudo()
     {
         Matricula.LaudoMedico = null;
-        NomeLaudo = "Nenhum laudo anexado";
+        NomeLaudo = LocalizationManager.Instance["strExcluir003"];
         OnPropertyChanged(nameof(TemLaudo));
     }
 }

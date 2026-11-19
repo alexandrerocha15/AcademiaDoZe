@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AcademiaDoZe.Presentation.AppMaui.Views.LogradouroListPage"
-             xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
+             xmlns:helpers="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Helpers"
+    xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
              x:DataType="vm:LogradouroListViewModel"
              xmlns:dto="clr-namespace:AcademiaDoZe.Application.DTOs;assembly=AcademiaDoZe.Application"
              Title="{Binding Title}">
@@ -28,13 +29,13 @@
 
                 <Entry Grid.Column="2"
                        Text="{Binding SearchText}"
-                       Placeholder="Digite o valor..."
+                       Placeholder="{helpers:Translate strDigiteOValor}"
                        HeightRequest="40"
                        VerticalOptions="Center"
                        Margin="0,0,0,0"/>
 
                 <Button Grid.Column="4"
-                        Text="Buscar"
+                        Text="{helpers:Translate strBuscar001}"
                         Style="{StaticResource ButtonPrimary}"
                         FontSize="14"
                         WidthRequest="80"
@@ -55,11 +56,11 @@
 
                     <CollectionView.EmptyView>
                         <StackLayout VerticalOptions="Center">
-                            <Label Text="Nenhum logradouro encontrado"
+                            <Label Text="{helpers:Translate strNenhumLogradouroEncontrado}"
                                    HorizontalOptions="Center"
                                    Style="{StaticResource SubHeadline}"/>
 
-                            <Button Text="Adicionar Primeiro Logradouro"
+                            <Button Text="{helpers:Translate strAdicionarPrimeiroLogradouro}"
                                     Command="{Binding AddLogradouroCommand}"
                                     Style="{StaticResource ButtonPrimary}"
                                     HeightRequest="50"
