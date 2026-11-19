@@ -1,4 +1,4 @@
-﻿using AcademiaDoZe.Presentation.AppMaui.ViewModels;
+using AcademiaDoZe.Presentation.AppMaui.ViewModels;
 using AcademiaDoZe.Presentation.AppMaui.Views;
 using AcademiaDoZe.Presentation.AppMaui.Configuration;
 using Microsoft.Extensions.Logging;
@@ -48,6 +48,8 @@ public static class MauiProgram
         builder.Services.AddTransient<AlunoViewModel>();
         builder.Services.AddTransient<MatriculaListViewModel>();
         builder.Services.AddTransient<MatriculaViewModel>();
+        builder.Services.AddTransient<AcessoAlunoViewModel>();
+        builder.Services.AddTransient<AcessoColaboradorViewModel>();
         builder.Services.AddSingleton(LocalizationManager.Instance);
 
         // Registrar Views
@@ -61,6 +63,8 @@ public static class MauiProgram
         builder.Services.AddTransient<AlunoPage>();
         builder.Services.AddTransient<MatriculaListPage>();
         builder.Services.AddTransient<MatriculaPage>();
+        builder.Services.AddTransient<AcessoAlunoPage>();
+        builder.Services.AddTransient<AcessoColaboradorPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

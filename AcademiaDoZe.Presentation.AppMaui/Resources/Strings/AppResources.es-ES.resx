@@ -716,4 +716,40 @@
   <data name="strVencendoFiltro" xml:space="preserve">
     <value>Vencen en días</value>
   </data>
+  <data name="strAcessoAlunoTitulo" xml:space="preserve">
+    <value>Acceso de alumnos</value>
+  </data>
+  <data name="strAcessoColaboradorTitulo" xml:space="preserve">
+    <value>Acceso de empleados</value>
+  </data>
+  <data name="strAcessoSelecione" xml:space="preserve">
+    <value>Seleccione una persona</value>
+  </data>
+  <data name="strAcessoRegistrar" xml:space="preserve">
+    <value>Registrar entrada / salida</value>
+  </data>
+  <data name="strAcessoErro" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="strAcessoAviso" xml:space="preserve">
+    <value>Registro de acceso</value>
+  </data>
+  <data name="strAcessoEntrada" xml:space="preserve">
+    <value>Entrada</value>
+  </data>
+  <data name="strAcessoSaida" xml:space="preserve">
+    <value>Salida</value>
+  </data>
+  <data name="strAcessoPlanoRestante" xml:space="preserve">
+    <value>Tiempo restante del plan</value>
+  </data>
+  <data name="strAcessoPermanencia" xml:space="preserve">
+    <value>Tiempo de permanencia</value>
+  </data>
+  <data name="strAcessoTotalDia" xml:space="preserve">
+    <value>Total trabajado hoy</value>
+  </data>
+  <data name="strAcessoEntradaRegistrada" xml:space="preserve">
+    <value>Entrada registrada</value>
+  </data>
 </root>

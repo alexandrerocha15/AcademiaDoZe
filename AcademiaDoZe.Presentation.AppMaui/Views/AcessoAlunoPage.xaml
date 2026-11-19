@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
+             xmlns:helpers="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Helpers"
+             xmlns:dto="clr-namespace:AcademiaDoZe.Application.DTOs;assembly=AcademiaDoZe.Application"
+             x:Class="AcademiaDoZe.Presentation.AppMaui.Views.AcessoAlunoPage"
+             x:DataType="vm:AcessoAlunoViewModel"
+             Title="{Binding Title}">
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="20" MaximumWidthRequest="760" HorizontalOptions="Fill">
+            <Border StrokeThickness="1" Padding="20" StrokeShape="RoundRectangle 12">
+                <VerticalStackLayout Spacing="16">
+                    <Label Text="{helpers:Translate strAcessoSelecione}"
+                           Style="{StaticResource SubHeadline}" />
+                    <Picker ItemsSource="{Binding Pessoas}"
+                            SelectedItem="{Binding Selecionado}"
+                            ItemDisplayBinding="{Binding Nome}" />
+                    <Button Text="{helpers:Translate strAcessoRegistrar}"
+                            Command="{Binding RegistrarCommand}"
+                            Style="{StaticResource ButtonPrimary}" />
+                </VerticalStackLayout>
+            </Border>
+            <Border StrokeThickness="1" Padding="20" StrokeShape="RoundRectangle 12">
+                <Label Text="{Binding Resultado}"
+                       LineBreakMode="WordWrap"
+                       FontSize="16" />
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
