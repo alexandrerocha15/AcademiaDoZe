@@ -7,6 +7,13 @@ namespace AcademiaDoZe.Presentation.AppMaui.ViewModels;
 
 public partial class AlunoListViewModel : BaseViewModel
 {
+    private static readonly System.Resources.ResourceManager Resources = new(
+        "AcademiaDoZe.Presentation.AppMaui.Resources.Strings.AppResources",
+        typeof(AlunoListViewModel).Assembly);
+
+    private static string T(string key) =>
+        Resources.GetString(key, System.Globalization.CultureInfo.CurrentUICulture) ?? key;
+
     private readonly IAlunoService _alunoService;
 
     public ObservableCollection<string> FilterTypes { get; } =
@@ -36,7 +43,9 @@ public partial class AlunoListViewModel : BaseViewModel
     public AlunoListViewModel(IAlunoService alunoService)
     {
         _alunoService = alunoService;
-        Title = "Alunos";
+        FilterTypes[0] = T("strNome");
+        SelectedFilterType = FilterTypes[0];
+        Title = T("listMsg000");
     }
 
     [RelayCommand]
@@ -82,7 +91,7 @@ public partial class AlunoListViewModel : BaseViewModel
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Erro", $"Erro ao carregar alunos: {ex.Message}", "OK");
+                T("listMsg001"), T("listMsg002").Replace("{ex.Message}", ex.Message), "OK");
         }
         finally
         {
@@ -108,7 +117,7 @@ public partial class AlunoListViewModel : BaseViewModel
             {
                 resultados = await _alunoService.ObterTodosAsync(cts.Token);
             }
-            else if (SelectedFilterType == "Nome")
+            else if ((SelectedFilterType == "Nome" || SelectedFilterType == T("strNome")))
             {
                 resultados = await _alunoService.ObterPorNomeAsync(
                     SearchText.Trim(), cts.Token);
@@ -150,7 +159,7 @@ public partial class AlunoListViewModel : BaseViewModel
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Erro", $"Erro ao buscar alunos: {ex.Message}", "OK");
+                T("listMsg001"), T("listMsg003").Replace("{ex.Message}", ex.Message), "OK");
         }
         finally
         {
@@ -164,9 +173,9 @@ public partial class AlunoListViewModel : BaseViewModel
         if (aluno == null) return;
 
         bool confirmar = await Shell.Current.DisplayAlertAsync(
-            "Confirmar Exclusão",
-            $"Deseja realmente excluir o aluno {aluno.Nome}?",
-            "Sim", "Não");
+            T("listMsg004"),
+            T("listMsg005").Replace("{aluno.Nome}", aluno.Nome),
+            T("listMsg006"), T("listMsg007"));
 
         if (!confirmar) return;
 
@@ -181,18 +190,18 @@ public partial class AlunoListViewModel : BaseViewModel
             {
                 Alunos.Remove(aluno);
                 await Shell.Current.DisplayAlertAsync(
-                    "Sucesso", "Aluno excluído!", "OK");
+                    T("listMsg008"), T("listMsg009"), "OK");
             }
             else
             {
                 await Shell.Current.DisplayAlertAsync(
-                    "Erro", "Não foi possível excluir o aluno.", "OK");
+                    T("listMsg001"), T("listMsg010"), "OK");
             }
         }
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Erro", $"Erro ao excluir aluno: {ex.Message}", "OK");
+                T("listMsg001"), T("listMsg011").Replace("{ex.Message}", ex.Message), "OK");
         }
         finally
         {

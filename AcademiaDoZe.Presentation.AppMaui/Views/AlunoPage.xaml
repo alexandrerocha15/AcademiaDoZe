@@ -2,6 +2,7 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helpers="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Helpers"
     xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
     xmlns:converters="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Converters"
     x:Class="AcademiaDoZe.Presentation.AppMaui.Views.AlunoPage"
@@ -28,7 +29,7 @@
                                ReturnCommand="{Binding SearchByCpfCommand}" />
 
                         <Button Grid.Column="1"
-                                Text="Buscar CPF"
+                                Text="{helpers:Translate strBuscarCpf}"
                                 Command="{Binding SearchByCpfCommand}"
                                 Style="{StaticResource ButtonPrimary}" />
                     </Grid>
@@ -39,22 +40,22 @@
             <Border Style="{StaticResource CardBorder}">
                 <VerticalStackLayout Spacing="12">
 
-                    <Label Text="Dados Pessoais"
+                    <Label Text="{helpers:Translate strDadosPessoais}"
                            Style="{StaticResource SubHeadline}" />
 
                     <Label Text="{Binding Aluno.Id, StringFormat='Aluno ID: {0}'}"
                            IsVisible="{Binding IsEditMode}" />
 
-                    <Label Text="Nome" />
+                    <Label Text="{helpers:Translate strNome}" />
                     <Entry Text="{Binding Aluno.Nome}"
-                           Placeholder="Nome completo"
+                           Placeholder="{helpers:Translate strNomeCompleto}"
                            MaxLength="150" />
 
-                    <Label Text="Data de Nascimento" />
+                    <Label Text="{helpers:Translate strNascimento}" />
                     <DatePicker Date="{Binding Aluno.DataNascimento, Converter={StaticResource DateOnlyConverter}, Mode=TwoWay}"
                                 Format="dd/MM/yyyy" />
 
-                    <Label Text="Telefone" />
+                    <Label Text="{helpers:Translate strTelefone}" />
                     <Entry Text="{Binding Aluno.Telefone}"
                            Keyboard="Telephone"
                            Placeholder="(00) 00000-0000"
@@ -68,33 +69,33 @@
                            Unfocused="OnEmailUnfocused" />
                     
                     <Label x:Name="EmailErrorLabel"
-                           Text="Formato de e-mail inválido. Use nome@dominio.com"
+                           Text="{helpers:Translate strEmailInvalido}"
                            TextColor="Red"
                            FontSize="12"
                            IsVisible="False" />
 
-                    <Label Text="Senha" />
+                    <Label Text="{helpers:Translate strSenha}" />
                     <Entry x:Name="SenhaEntry"
                            Text="{Binding Aluno.Senha}"
                            IsPassword="True"
-                           Placeholder="Digite a senha" />
+                           Placeholder="{helpers:Translate strDigiteSenha}" />
                     
                     <HorizontalStackLayout Spacing="10">
                         <Switch Toggled="OnShowPasswordToggled" />
-                        <Label Text="Mostrar senha"
+                        <Label Text="{helpers:Translate strMostrarSenha}"
                                VerticalOptions="Center" />
                     </HorizontalStackLayout>
 
-                    <Label Text="Deixe em branco para manter a senha atual."
+                    <Label Text="{helpers:Translate strSenhaAtual}"
                            FontSize="12"
                            IsVisible="{Binding IsEditMode}" />
 
-                    <Label Text="Confirmar Senha" />
+                    <Label Text="{helpers:Translate strConfirmarSenha}" />
                     <Entry Text="{Binding ConfirmarSenha}"
                            IsPassword="True"
-                           Placeholder="Confirme a senha" />
+                           Placeholder="{helpers:Translate strConfirmeSenha}" />
 
-                    <Label Text="Foto" />
+                    <Label Text="{helpers:Translate strFoto}" />
                     <Image Source="{Binding Aluno.Foto, Converter={StaticResource FotoConverter}}"
                             WidthRequest="120"
                             HeightRequest="120"
@@ -107,7 +108,7 @@
                          </Image.GestureRecognizers>
                      </Image>
 
-                    <Button Text="Selecionar Imagem"
+                    <Button Text="{helpers:Translate strSelecionarImagem}"
                             Command="{Binding SelecionarFotoCommand}"
                             Style="{StaticResource ButtonPrimary}" />
 
@@ -118,7 +119,7 @@
             <Border Style="{StaticResource CardBorder}">
                 <VerticalStackLayout Spacing="12">
 
-                    <Label Text="Endereço"
+                    <Label Text="{helpers:Translate strEndereco}"
                            Style="{StaticResource SubHeadline}" />
 
                     <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
@@ -129,18 +130,18 @@
                                ReturnCommand="{Binding SearchByCepCommand}" />
 
                         <Button Grid.Column="1"
-                                Text="Buscar CEP"
+                                Text="{helpers:Translate strBuscarCep}"
                                 Command="{Binding SearchByCepCommand}"
                                 Style="{StaticResource ButtonPrimary}" />
                     </Grid>
 
-                    <Label Text="Nenhum logradouro vinculado. Informe o CEP e clique em Buscar CEP."
+                    <Label Text="{helpers:Translate strSemLogradouro}"
                            IsVisible="{Binding HasNoEnderecoVinculado}"
                            FontSize="12" />
 
                     <VerticalStackLayout Spacing="5"
                                          IsVisible="{Binding HasEnderecoVinculado}">
-                        <Label Text="Logradouro vinculado"
+                        <Label Text="{helpers:Translate strLogradouroVinculado}"
                                FontAttributes="Bold" />
                         <Label Text="{Binding Aluno.Endereco.Nome, StringFormat='Rua: {0}'}" />
                         <Label Text="{Binding Aluno.Endereco.Bairro, StringFormat='Bairro: {0}'}" />
@@ -148,13 +149,13 @@
                         <Label Text="{Binding Aluno.Endereco.Estado, StringFormat='Estado: {0}'}" />
                     </VerticalStackLayout>
 
-                    <Label Text="Número" />
+                    <Label Text="{helpers:Translate strNumero}" />
                     <Entry Text="{Binding Aluno.Numero}"
-                           Placeholder="Número" />
+                           Placeholder="{helpers:Translate strNumero}" />
 
-                    <Label Text="Complemento" />
+                    <Label Text="{helpers:Translate strComplemento}" />
                     <Entry Text="{Binding Aluno.Complemento}"
-                           Placeholder="Complemento (opcional)" />
+                           Placeholder="{helpers:Translate strComplementoOpcional}" />
 
                 </VerticalStackLayout>
             </Border>
@@ -167,7 +168,7 @@
                         HeightRequest="50" />
 
                 <Button Grid.Column="1"
-                        Text="Salvar"
+                        Text="{helpers:Translate strSalvar}"
                         Command="{Binding SaveAlunoCommand}"
                         Style="{StaticResource ButtonPrimary}"
                         HeightRequest="50" />

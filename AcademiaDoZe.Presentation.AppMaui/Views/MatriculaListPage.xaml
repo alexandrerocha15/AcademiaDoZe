@@ -2,6 +2,7 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helpers="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Helpers"
     xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
     xmlns:dto="clr-namespace:AcademiaDoZe.Application.DTOs;assembly=AcademiaDoZe.Application"
     xmlns:converters="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Converters"
@@ -26,12 +27,12 @@
                 <Entry
                     Grid.Column="1"
                     Text="{Binding SearchText}"
-                    Placeholder="Buscar matrícula..."
+                    Placeholder="{helpers:Translate strBuscarMatricula}"
                     ReturnCommand="{Binding SearchMatriculasCommand}" />
 
                 <Button
                     Grid.Column="2"
-                    Text="Buscar"
+                    Text="{helpers:Translate strBuscar001}"
                     Command="{Binding SearchMatriculasCommand}"
                     Style="{StaticResource ButtonPrimary}" />
             </Grid>
@@ -82,14 +83,11 @@
                                             Text="{Binding Plano, Converter={StaticResource EnumDisplay}}"
                                             FontAttributes="Bold" />
 
-                                        <Label
-                                            Text="{Binding DataInicio, StringFormat='Início: {0:dd/MM/yyyy}'}" />
+                                        <Label><Label.FormattedText><FormattedString><Span Text="{helpers:Translate strInicioLista}"/><Span Text=": "/><Span Text="{Binding DataInicio, StringFormat='{0:dd/MM/yyyy}'}"/></FormattedString></Label.FormattedText></Label>
 
-                                        <Label
-                                            Text="{Binding DataFim, StringFormat='Término: {0:dd/MM/yyyy}'}" />
+                                        <Label><Label.FormattedText><FormattedString><Span Text="{helpers:Translate strTerminoLista}"/><Span Text=": "/><Span Text="{Binding DataFim, StringFormat='{0:dd/MM/yyyy}'}"/></FormattedString></Label.FormattedText></Label>
 
-                                        <Label
-                                            Text="{Binding Objetivo, StringFormat='Objetivo: {0}'}" />
+                                        <Label><Label.FormattedText><FormattedString><Span Text="{helpers:Translate strObjetivoLista}"/><Span Text=": "/><Span Text="{Binding Objetivo}"/></FormattedString></Label.FormattedText></Label>
 
                                         <Label
                                             Text="{Binding RestricoesMedicas, Converter={StaticResource RestricoesDisplay}}"
@@ -107,12 +105,12 @@
                                             Aspect="AspectFill" />
 
                                         <Button
-                                            Text="Editar"
+                                            Text="{helpers:Translate strEditar002}"
                                             Clicked="OnEditButtonClicked"
                                             Style="{StaticResource ButtonPrimary}" />
 
                                         <Button
-                                            Text="Excluir"
+                                            Text="{helpers:Translate strExcluir003}"
                                             Clicked="OnDeleteButtonClicked"
                                             Style="{StaticResource ButtonSecondary}" />
                                     </VerticalStackLayout>
@@ -126,9 +124,9 @@
                             Spacing="12"
                             VerticalOptions="Center"
                             HorizontalOptions="Center">
-                            <Label Text="Nenhuma matrícula encontrada." />
+                            <Label Text="{helpers:Translate strNenhumaMatriculaEncontrada}" />
                             <Button
-                                Text="Nova matrícula"
+                                Text="{helpers:Translate strNovaMatricula}"
                                 Command="{Binding AddMatriculaCommand}"
                                 Style="{StaticResource ButtonPrimary}" />
                         </VerticalStackLayout>

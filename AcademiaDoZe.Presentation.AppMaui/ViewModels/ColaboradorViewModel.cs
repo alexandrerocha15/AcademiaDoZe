@@ -9,6 +9,13 @@ namespace AcademiaDoZe.Presentation.AppMaui.ViewModels;
 [QueryProperty(nameof(ColaboradorId), "Id")]
 public partial class ColaboradorViewModel : BaseViewModel
 {
+    private static string T(string key) =>
+        new System.Resources.ResourceManager(
+            "AcademiaDoZe.Presentation.AppMaui.Resources.Strings.AppResources",
+            typeof(ColaboradorViewModel).Assembly)
+        .GetString(key, System.Globalization.CultureInfo.CurrentUICulture) ?? key;
+
+
     public IEnumerable<AppColaboradorTipo> ColaboradorTipos { get; } =
         Enum.GetValues<AppColaboradorTipo>();
 
@@ -61,7 +68,7 @@ public partial class ColaboradorViewModel : BaseViewModel
     {
         _colaboradorService = colaboradorService;
         _logradouroService = logradouroService;
-        Title = "Detalhes do Colaborador";
+        Title = T("vmMsg037");
     }
 
     public async Task InitializeAsync()
@@ -71,13 +78,13 @@ public partial class ColaboradorViewModel : BaseViewModel
         if (ColaboradorId > 0)
         {
             IsEditMode = true;
-            Title = "Editar Colaborador";
+            Title = T("vmMsg038");
             await LoadColaboradorAsync();
         }
         else
         {
             IsEditMode = false;
-            Title = "Novo Colaborador";
+            Title = T("vmMsg039");
             Colaborador = CriarColaboradorPadrao();
             NotificarStatusEndereco();
         }
@@ -153,13 +160,13 @@ public partial class ColaboradorViewModel : BaseViewModel
         }
         catch (OperationCanceledException)
         {
-            await Shell.Current.DisplayAlertAsync("Tempo Esgotado",
-                "O carregamento do colaborador expirou. Verifique a conexão.", "OK");
+            await Shell.Current.DisplayAlertAsync(T("vmMsg040"),
+                T("vmMsg041"), "OK");
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlertAsync("Erro",
-                $"Erro ao carregar colaborador: {ex.Message}", "OK");
+            await Shell.Current.DisplayAlertAsync(T("vmMsg005"),
+                T("vmMsg042").Replace("{ex.Message}", ex.Message), "OK");
         }
         finally
         {
@@ -172,8 +179,8 @@ public partial class ColaboradorViewModel : BaseViewModel
     {
         if (string.IsNullOrWhiteSpace(Colaborador.Cpf))
         {
-            await Shell.Current.DisplayAlertAsync("Aviso",
-                "Informe o CPF para realizar a busca.", "OK");
+            await Shell.Current.DisplayAlertAsync(T("vmMsg003"),
+                T("vmMsg043"), "OK");
             return;
         }
 
@@ -181,8 +188,8 @@ public partial class ColaboradorViewModel : BaseViewModel
 
         if (apenasDigitos.Length != 11)
         {
-            await Shell.Current.DisplayAlertAsync("Validação",
-                "O CPF deve conter exatamente 11 dígitos numéricos.", "OK");
+            await Shell.Current.DisplayAlertAsync(T("vmMsg007"),
+                T("vmMsg044"), "OK");
             return;
         }
 
@@ -210,26 +217,26 @@ public partial class ColaboradorViewModel : BaseViewModel
                 Colaborador = colaboradorData;
                 ColaboradorId = colaboradorData.Id;
                 IsEditMode = true;
-                Title = "Editar Colaborador";
+                Title = T("vmMsg038");
                 NotificarStatusEndereco();
 
-                await Shell.Current.DisplayAlertAsync("Aviso",
-                    "Colaborador já cadastrado! Dados carregados para edição.", "OK");
+                await Shell.Current.DisplayAlertAsync(T("vmMsg003"),
+                    T("vmMsg045"), "OK");
             }
             else
             {
-                await Shell.Current.DisplayAlertAsync("Aviso", "CPF não encontrado.", "OK");
+                await Shell.Current.DisplayAlertAsync(T("vmMsg003"), T("vmMsg009"), "OK");
             }
         }
         catch (OperationCanceledException)
         {
-            await Shell.Current.DisplayAlertAsync("Tempo Esgotado",
-                "A busca por CPF expirou. Verifique a conexão.", "OK");
+            await Shell.Current.DisplayAlertAsync(T("vmMsg040"),
+                T("vmMsg046"), "OK");
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlertAsync("Erro",
-                $"Erro ao buscar CPF: {ex.Message}", "OK");
+            await Shell.Current.DisplayAlertAsync(T("vmMsg005"),
+                T("vmMsg011").Replace("{ex.Message}", ex.Message), "OK");
         }
         finally
         {
@@ -243,8 +250,8 @@ public partial class ColaboradorViewModel : BaseViewModel
         if (Colaborador.Endereco == null ||
             string.IsNullOrWhiteSpace(Colaborador.Endereco.Cep))
         {
-            await Shell.Current.DisplayAlertAsync("Aviso",
-                "Informe o CEP para realizar a busca.", "OK");
+            await Shell.Current.DisplayAlertAsync(T("vmMsg003"),
+                T("vmMsg047"), "OK");
             return;
         }
 
@@ -252,8 +259,8 @@ public partial class ColaboradorViewModel : BaseViewModel
 
         if (apenasDigitos.Length != 8)
         {
-            await Shell.Current.DisplayAlertAsync("Validação",
-                "O CEP deve conter exatamente 8 dígitos numéricos.", "OK");
+            await Shell.Current.DisplayAlertAsync(T("vmMsg007"),
+                T("vmMsg048"), "OK");
             return;
         }
 
@@ -270,24 +277,24 @@ public partial class ColaboradorViewModel : BaseViewModel
                 OnPropertyChanged(nameof(Colaborador));
                 NotificarStatusEndereco();
 
-                await Shell.Current.DisplayAlertAsync("Aviso",
-                    "CEP encontrado! Endereço preenchido automaticamente.", "OK");
+                await Shell.Current.DisplayAlertAsync(T("vmMsg003"),
+                    T("vmMsg049"), "OK");
             }
             else
             {
-                await Shell.Current.DisplayAlertAsync("Aviso",
-                    "CEP não encontrado no cadastro de logradouros. Cadastre o logradouro primeiro.", "OK");
+                await Shell.Current.DisplayAlertAsync(T("vmMsg003"),
+                    T("vmMsg050"), "OK");
             }
         }
         catch (OperationCanceledException)
         {
-            await Shell.Current.DisplayAlertAsync("Tempo Esgotado",
-                "A busca de CEP expirou. Verifique a conexão com o banco.", "OK");
+            await Shell.Current.DisplayAlertAsync(T("vmMsg040"),
+                T("vmMsg051"), "OK");
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlertAsync("Erro",
-                $"Erro ao buscar CEP: {ex.Message}", "OK");
+            await Shell.Current.DisplayAlertAsync(T("vmMsg005"),
+                T("vmMsg014").Replace("{ex.Message}", ex.Message), "OK");
         }
         finally
         {
@@ -325,15 +332,15 @@ public partial class ColaboradorViewModel : BaseViewModel
                     }
                     else
                     {
-                        await Shell.Current.DisplayAlertAsync("Endereço Obrigatório",
-                            "O CEP informado não está cadastrado como Logradouro. Cadastre-o previamente.", "OK");
+                        await Shell.Current.DisplayAlertAsync(T("vmMsg052"),
+                            T("vmMsg053"), "OK");
                         return;
                     }
                 }
                 else
                 {
-                    await Shell.Current.DisplayAlertAsync("Validação",
-                        "Informe um CEP válido com 8 dígitos para o endereço.", "OK");
+                    await Shell.Current.DisplayAlertAsync(T("vmMsg007"),
+                        T("vmMsg054"), "OK");
                     return;
                 }
             }
@@ -352,35 +359,35 @@ public partial class ColaboradorViewModel : BaseViewModel
             if (IsEditMode)
             {
                 await _colaboradorService.AtualizarAsync(Colaborador, cts.Token);
-                await Shell.Current.DisplayAlertAsync("Sucesso",
-                    "Colaborador atualizado com sucesso!", "OK");
+                await Shell.Current.DisplayAlertAsync(T("vmMsg033"),
+                    T("vmMsg055"), "OK");
             }
             else
             {
                 await _colaboradorService.AdicionarAsync(Colaborador, cts.Token);
-                await Shell.Current.DisplayAlertAsync("Sucesso",
-                    "Colaborador criado com sucesso!", "OK");
+                await Shell.Current.DisplayAlertAsync(T("vmMsg033"),
+                    T("vmMsg056"), "OK");
             }
 
             await Shell.Current.GoToAsync("..");
         }
         catch (OperationCanceledException)
         {
-            await Shell.Current.DisplayAlertAsync("Tempo Esgotado",
-                "A gravação do colaborador expirou. Verifique a conexão.", "OK");
+            await Shell.Current.DisplayAlertAsync(T("vmMsg040"),
+                T("vmMsg057"), "OK");
         }
         catch (InvalidOperationException ex)
         {
-            await Shell.Current.DisplayAlertAsync("Regra de Negócio", ex.Message, "OK");
+            await Shell.Current.DisplayAlertAsync(T("vmMsg058"), ex.Message, "OK");
         }
         catch (ArgumentException ex)
         {
-            await Shell.Current.DisplayAlertAsync("Validação", ex.Message, "OK");
+            await Shell.Current.DisplayAlertAsync(T("vmMsg007"), ex.Message, "OK");
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlertAsync("Erro",
-                $"Erro ao salvar colaborador: {ex.Message}", "OK");
+            await Shell.Current.DisplayAlertAsync(T("vmMsg005"),
+                T("vmMsg059").Replace("{ex.Message}", ex.Message), "OK");
         }
         finally
         {
@@ -394,9 +401,9 @@ public partial class ColaboradorViewModel : BaseViewModel
         try
         {
             string escolha = await Shell.Current.DisplayActionSheetAsync(
-                "Origem da Imagem", "Cancelar", "Remover Foto", "Galeria", "Câmera");
+                T("vmMsg015"), T("vmMsg016"), T("vmMsg017"), T("vmMsg018"), T("vmMsg019"));
 
-            if (escolha == "Remover Foto")
+            if (escolha == T("vmMsg017"))
             {
                 Colaborador.Foto = null;
                 OnPropertyChanged(nameof(Colaborador));
@@ -405,15 +412,15 @@ public partial class ColaboradorViewModel : BaseViewModel
 
             FileResult? result = null;
 
-            if (escolha == "Galeria")
+            if (escolha == T("vmMsg018"))
             {
                 result = await FilePicker.Default.PickAsync(new PickOptions
                 {
-                    PickerTitle = "Selecione uma imagem",
+                    PickerTitle = T("vmMsg020"),
                     FileTypes = FilePickerFileType.Images
                 });
             }
-            else if (escolha == "Câmera")
+            else if (escolha == T("vmMsg019"))
             {
                 if (MediaPicker.Default.IsCaptureSupported)
                 {
@@ -421,8 +428,8 @@ public partial class ColaboradorViewModel : BaseViewModel
                 }
                 else
                 {
-                    await Shell.Current.DisplayAlertAsync("Erro",
-                        "Captura de foto não suportada neste dispositivo.", "OK");
+                    await Shell.Current.DisplayAlertAsync(T("vmMsg005"),
+                        T("vmMsg060"), "OK");
                     return;
                 }
             }
@@ -439,8 +446,8 @@ public partial class ColaboradorViewModel : BaseViewModel
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlertAsync("Erro",
-                $"Erro ao selecionar imagem: {ex.Message}", "OK");
+            await Shell.Current.DisplayAlertAsync(T("vmMsg005"),
+                T("vmMsg061").Replace("{ex.Message}", ex.Message), "OK");
         }
     }
 
@@ -450,61 +457,61 @@ public partial class ColaboradorViewModel : BaseViewModel
         var errors = new List<string>();
 
         if (string.IsNullOrWhiteSpace(colaborador.Nome))
-            errors.Add("• Nome é obrigatório.");
+            errors.Add(T("vmMsg062"));
 
         if (string.IsNullOrWhiteSpace(colaborador.Cpf))
         {
-            errors.Add("• CPF é obrigatório.");
+            errors.Add(T("vmMsg063"));
         }
         else if (new string(colaborador.Cpf.Where(char.IsDigit).ToArray()).Length != 11)
         {
-            errors.Add("• CPF deve conter exatamente 11 dígitos numéricos.");
+            errors.Add(T("vmMsg064"));
         }
 
         if (colaborador.DataNascimento == default)
         {
-            errors.Add("• Data de nascimento é obrigatória.");
+            errors.Add(T("vmMsg065"));
         }
         else
         {
             var hoje = DateOnly.FromDateTime(DateTime.Today);
 
             if (colaborador.DataNascimento > hoje)
-                errors.Add("• Data de nascimento não pode ser futura.");
+                errors.Add(T("vmMsg066"));
             else if (colaborador.DataNascimento > DateOnly.FromDateTime(DateTime.Today.AddYears(-12)))
-                errors.Add("• O colaborador deve ter no mínimo 12 anos de idade.");
+                errors.Add(T("vmMsg067"));
         }
 
         if (string.IsNullOrWhiteSpace(colaborador.Telefone))
         {
-            errors.Add("• Telefone é obrigatório.");
+            errors.Add(T("vmMsg068"));
         }
         else if (new string(colaborador.Telefone.Where(char.IsDigit).ToArray()).Length != 11)
         {
-            errors.Add("• Telefone deve conter 11 dígitos numéricos com DDD.");
+            errors.Add(T("vmMsg069"));
         }
 
         if (!string.IsNullOrWhiteSpace(colaborador.Email) &&
             !ValidarFormatoEmail(colaborador.Email.Trim()))
         {
-            errors.Add("• Formato de e-mail inválido.");
+            errors.Add(T("vmMsg070"));
         }
 
         if (!isEditMode)
         {
             if (string.IsNullOrWhiteSpace(colaborador.Senha))
             {
-                errors.Add("• Senha é obrigatória no cadastro.");
+                errors.Add(T("vmMsg071"));
             }
             else
             {
                 var senha = colaborador.Senha.Trim();
 
                 if (senha.Length < 6 || !senha.Any(char.IsUpper))
-                    errors.Add("• A senha deve ter no mínimo 6 caracteres e uma letra maiúscula.");
+                    errors.Add(T("vmMsg072"));
 
                 if (colaborador.Senha != confirmarSenha)
-                    errors.Add("• A confirmação de senha não confere.");
+                    errors.Add(T("vmMsg073"));
             }
         }
         else if (!string.IsNullOrWhiteSpace(colaborador.Senha))
@@ -512,38 +519,38 @@ public partial class ColaboradorViewModel : BaseViewModel
             var senha = colaborador.Senha.Trim();
 
             if (senha.Length < 6 || !senha.Any(char.IsUpper))
-                errors.Add("• A nova senha deve ter no mínimo 6 caracteres e uma letra maiúscula.");
+                errors.Add(T("vmMsg074"));
 
             if (colaborador.Senha != confirmarSenha)
-                errors.Add("• A confirmação de senha não confere.");
+                errors.Add(T("vmMsg073"));
         }
 
         if (colaborador.Endereco == null ||
             string.IsNullOrWhiteSpace(colaborador.Endereco.Cep))
         {
-            errors.Add("• CEP do endereço é obrigatório.");
+            errors.Add(T("vmMsg075"));
         }
 
         if (string.IsNullOrWhiteSpace(colaborador.Numero))
-            errors.Add("• Número do endereço é obrigatório.");
+            errors.Add(T("vmMsg076"));
 
         if (colaborador.DataAdmissao == default)
-            errors.Add("• Data de admissão é obrigatória.");
+            errors.Add(T("vmMsg077"));
         else if (colaborador.DataAdmissao > DateOnly.FromDateTime(DateTime.Today))
-            errors.Add("• Data de admissão não pode ser futura.");
+            errors.Add(T("vmMsg078"));
 
         if (colaborador.Tipo == AppColaboradorTipo.Administrador &&
             colaborador.Vinculo != AppColaboradorVinculo.CLT)
         {
-            errors.Add("• Colaborador Administrador deve ter vínculo CLT.");
+            errors.Add(T("vmMsg079"));
         }
 
         if (errors.Count > 0)
         {
-            var mensagem = "Por favor, corrija os seguintes campos:\n\n" +
+            var mensagem = T("vmMsg080") +
                            string.Join("\n", errors);
 
-            await Shell.Current.DisplayAlertAsync("Erros de Validação", mensagem, "OK");
+            await Shell.Current.DisplayAlertAsync(T("vmMsg081"), mensagem, "OK");
             return false;
         }
 

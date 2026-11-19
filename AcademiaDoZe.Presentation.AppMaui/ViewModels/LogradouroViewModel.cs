@@ -1,6 +1,7 @@
 using AcademiaDoZe.Application.DTOs;
 using AcademiaDoZe.Application.Interfaces;
 using CommunityToolkit.Mvvm.Input;
+using AcademiaDoZe.Presentation.AppMaui.Helpers;
 
 namespace AcademiaDoZe.Presentation.AppMaui.ViewModels;
 
@@ -44,7 +45,7 @@ public partial class LogradouroViewModel : BaseViewModel
     public LogradouroViewModel(ILogradouroService logradouroService)
     {
         _logradouroService = logradouroService;
-        Title = "Detalhes do Logradouro";
+        Title = LocalizationManager.Instance["strCPFDoAluno"];
     }
 
     public async Task InitializeAsync()
@@ -52,13 +53,13 @@ public partial class LogradouroViewModel : BaseViewModel
         if (LogradouroId > 0)
         {
             IsEditMode = true;
-            Title = "Editar Logradouro";
+            Title = LocalizationManager.Instance["strBusqueUmAlunoCadastradoPeloCPF"];
             await LoadLogradouroAsync();
         }
         else
         {
             IsEditMode = false;
-            Title = "Novo Logradouro";
+            Title = LocalizationManager.Instance["strPlanoEVigencia"];
 
             Logradouro = new LogradouroDto
             {
@@ -104,15 +105,15 @@ public partial class LogradouroViewModel : BaseViewModel
         catch (OperationCanceledException)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Tempo Esgotado",
-                "O carregamento do logradouro expirou. Verifique a conexão.",
+                LocalizationManager.Instance["listMsg017"],
+                LocalizationManager.Instance["strTipoDePlano"],
                 "OK");
         }
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Erro",
-                $"Erro ao carregar logradouro: {ex.Message}",
+                LocalizationManager.Instance["listMsg001"],
+                string.Format(LocalizationManager.Instance["strErroAoCarregarLogradouro0"], ex.Message),
                 "OK");
         }
         finally
@@ -127,8 +128,8 @@ public partial class LogradouroViewModel : BaseViewModel
         if (string.IsNullOrWhiteSpace(Logradouro.Cep))
         {
             await Shell.Current.DisplayAlertAsync(
-                "Aviso",
-                "Informe o CEP para realizar a busca.",
+                LocalizationManager.Instance["vmMsg003"],
+                LocalizationManager.Instance["vmMsg047"],
                 "OK");
 
             return;
@@ -140,8 +141,8 @@ public partial class LogradouroViewModel : BaseViewModel
         if (apenasDigitos.Length != 8)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Validação",
-                "O CEP deve conter exatamente 8 dígitos numéricos.",
+                LocalizationManager.Instance["listMsg015"],
+                LocalizationManager.Instance["vmMsg048"],
                 "OK");
 
             return;
@@ -164,33 +165,33 @@ public partial class LogradouroViewModel : BaseViewModel
                 Logradouro = logradouroData;
                 LogradouroId = logradouroData.Id;
                 IsEditMode = true;
-                Title = "Editar Logradouro";
+                Title = LocalizationManager.Instance["strBusqueUmAlunoCadastradoPeloCPF"];
 
                 await Shell.Current.DisplayAlertAsync(
-                    "Aviso",
-                    "CEP já cadastrado! Dados carregados para edição.",
+                    LocalizationManager.Instance["vmMsg003"],
+                    LocalizationManager.Instance["strDataDeInicio"],
                     "OK");
             }
             else
             {
                 await Shell.Current.DisplayAlertAsync(
-                    "Aviso",
-                    "CEP não encontrado.",
+                    LocalizationManager.Instance["vmMsg003"],
+                    LocalizationManager.Instance["strDataDeTerminoAutomatica"],
                     "OK");
             }
         }
         catch (OperationCanceledException)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Tempo Esgotado",
-                "A busca do CEP expirou. Verifique a conexão com o banco.",
+                LocalizationManager.Instance["listMsg017"],
+                LocalizationManager.Instance["strObjetivoDaMatricula"],
                 "OK");
         }
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Erro",
-                $"Erro ao buscar CEP: {ex.Message}",
+                LocalizationManager.Instance["listMsg001"],
+                string.Format(LocalizationManager.Instance["strErroAoBuscarCEP0"], ex.Message),
                 "OK");
         }
         finally
@@ -237,8 +238,8 @@ public partial class LogradouroViewModel : BaseViewModel
                     cts.Token);
 
                 await Shell.Current.DisplayAlertAsync(
-                    "Sucesso",
-                    "Logradouro atualizado com sucesso!",
+                    LocalizationManager.Instance["listMsg008"],
+                    LocalizationManager.Instance["strExHipertrofiaCondicionamento"],
                     "OK");
             }
             else
@@ -248,8 +249,8 @@ public partial class LogradouroViewModel : BaseViewModel
                     cts.Token);
 
                 await Shell.Current.DisplayAlertAsync(
-                    "Sucesso",
-                    "Logradouro criado com sucesso!",
+                    LocalizationManager.Instance["listMsg008"],
+                    LocalizationManager.Instance["strRestricoesMedicas"],
                     "OK");
             }
 
@@ -258,29 +259,29 @@ public partial class LogradouroViewModel : BaseViewModel
         catch (OperationCanceledException)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Tempo Esgotado",
-                "A gravação do logradouro expirou. Verifique a conexão.",
+                LocalizationManager.Instance["listMsg017"],
+                LocalizationManager.Instance["strSelecioneTodasAsRestricoesAplicaveis"],
                 "OK");
         }
         catch (InvalidOperationException ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Regra de Negócio",
+                LocalizationManager.Instance["vmMsg058"],
                 ex.Message,
                 "OK");
         }
         catch (ArgumentException ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Validação",
+                LocalizationManager.Instance["listMsg015"],
                 ex.Message,
                 "OK");
         }
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Erro",
-                $"Erro ao salvar logradouro: {ex.Message}",
+                LocalizationManager.Instance["listMsg001"],
+                string.Format(LocalizationManager.Instance["strErroAoSalvarLogradouro0"], ex.Message),
                 "OK");
         }
         finally
@@ -296,7 +297,7 @@ public partial class LogradouroViewModel : BaseViewModel
 
         if (string.IsNullOrWhiteSpace(logradouro.Cep))
         {
-            errors.Add("• CEP é obrigatório.");
+            errors.Add(LocalizationManager.Instance["strDiabetes"]);
         }
         else
         {
@@ -306,28 +307,28 @@ public partial class LogradouroViewModel : BaseViewModel
             if (cepDigitos.Length != 8)
             {
                 errors.Add(
-                    "• O CEP deve conter exatamente 8 dígitos numéricos.");
+                    LocalizationManager.Instance["strPressaoAlta"]);
             }
         }
 
         if (string.IsNullOrWhiteSpace(logradouro.Nome))
         {
-            errors.Add("• Logradouro / Rua é obrigatório.");
+            errors.Add(LocalizationManager.Instance["strLabirintite"]);
         }
 
         if (string.IsNullOrWhiteSpace(logradouro.Bairro))
         {
-            errors.Add("• Bairro é obrigatório.");
+            errors.Add(LocalizationManager.Instance["strAlergias"]);
         }
 
         if (string.IsNullOrWhiteSpace(logradouro.Cidade))
         {
-            errors.Add("• Cidade é obrigatória.");
+            errors.Add(LocalizationManager.Instance["strProblemasRespiratorios"]);
         }
 
         if (string.IsNullOrWhiteSpace(logradouro.Estado))
         {
-            errors.Add("• Estado (UF) é obrigatório.");
+            errors.Add(LocalizationManager.Instance["strRemedioContinuo"]);
         }
         else
         {
@@ -337,23 +338,23 @@ public partial class LogradouroViewModel : BaseViewModel
                 !estadoLimpo.All(char.IsLetter))
             {
                 errors.Add(
-                    "• O Estado deve conter a sigla UF de 2 letras (ex: SC, SP).");
+                    LocalizationManager.Instance["strObservacoes"]);
             }
         }
 
         if (string.IsNullOrWhiteSpace(logradouro.Pais))
         {
-            errors.Add("• País é obrigatório.");
+            errors.Add(LocalizationManager.Instance["strDescrevaAsRestricoesMedicas"]);
         }
 
         if (errors.Count > 0)
         {
             var mensagem =
-                "Por favor, corrija os seguintes campos:\n\n" +
+                LocalizationManager.Instance["strLaudoMedicoPDF"] +
                 string.Join("\n", errors);
 
             await Shell.Current.DisplayAlertAsync(
-                "Erros de Validação",
+                LocalizationManager.Instance["vmMsg081"],
                 mensagem,
                 "OK");
 

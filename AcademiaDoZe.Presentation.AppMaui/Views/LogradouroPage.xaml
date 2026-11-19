@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AcademiaDoZe.Presentation.AppMaui.Views.LogradouroPage"
-             xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
+             xmlns:helpers="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Helpers"
+    xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
              x:DataType="vm:LogradouroViewModel"
              Title="{Binding Title}">
 
@@ -23,7 +24,7 @@
                                Margin="0,0,10,0"/>
 
                         <Button Grid.Column="1"
-                                Text="Buscar CEP"
+                                Text="{helpers:Translate strBuscarCEP}"
                                 Command="{Binding SearchByCepCommand}"
                                 Style="{StaticResource ButtonPrimary}"
                                 HeightRequest="40"
@@ -48,33 +49,33 @@
                            Style="{StaticResource SubHeadline}"/>
 
                     <StackLayout Spacing="5">
-                        <Label Text="Nome/Rua"/>
+                        <Label Text="{helpers:Translate strNomeRua}"/>
                         <Entry Text="{Binding Logradouro.Nome}"
-                               Placeholder="Digite o nome da rua..."/>
+                               Placeholder="{helpers:Translate strDigiteONomeDaRua}"/>
                     </StackLayout>
 
                     <StackLayout Spacing="5">
-                        <Label Text="Bairro"/>
+                        <Label Text="{helpers:Translate strBairro}"/>
                         <Entry Text="{Binding Logradouro.Bairro}"
-                               Placeholder="Digite o bairro..."/>
+                               Placeholder="{helpers:Translate strDigiteOBairro}"/>
                     </StackLayout>
 
                     <StackLayout Spacing="5">
-                        <Label Text="Cidade"/>
+                        <Label Text="{helpers:Translate strCidade}"/>
                         <Entry Text="{Binding Logradouro.Cidade}"
-                               Placeholder="Digite a cidade..."/>
+                               Placeholder="{helpers:Translate strDigiteACidade}"/>
                     </StackLayout>
 
                     <StackLayout Spacing="5">
-                        <Label Text="Estado"/>
+                        <Label Text="{helpers:Translate strEstado}"/>
                         <Entry Text="{Binding Logradouro.Estado}"
-                               Placeholder="Digite o estado..."/>
+                               Placeholder="{helpers:Translate strDigiteOEstado}"/>
                     </StackLayout>
 
                     <StackLayout Spacing="5">
-                        <Label Text="País"/>
+                        <Label Text="{helpers:Translate strPais}"/>
                         <Entry Text="{Binding Logradouro.Pais}"
-                               Placeholder="Digite o país..."/>
+                               Placeholder="{helpers:Translate strDigiteOPais}"/>
                     </StackLayout>
 
                 </StackLayout>
@@ -86,7 +87,7 @@
                   Margin="15,10">
 
                 <Button Grid.Column="0"
-                        Text="Cancelar"
+                        Text="{helpers:Translate strCancelar004}"
                         Command="{Binding CancelCommand}"
                         Style="{StaticResource ButtonSecondary}"
                         HeightRequest="50">
@@ -99,7 +100,7 @@
                 </Button>
 
                 <Button Grid.Column="1"
-                        Text="Salvar"
+                        Text="{helpers:Translate strSalvar005}"
                         Command="{Binding SaveLogradouroCommand}"
                         Style="{StaticResource ButtonPrimary}"
                         HeightRequest="50">

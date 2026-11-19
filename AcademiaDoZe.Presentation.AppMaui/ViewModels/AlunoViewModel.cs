@@ -7,6 +7,13 @@ namespace AcademiaDoZe.Presentation.AppMaui.ViewModels;
 [QueryProperty(nameof(AlunoId), "Id")]
 public partial class AlunoViewModel : BaseViewModel
 {
+    private static string T(string key) =>
+        new System.Resources.ResourceManager(
+            "AcademiaDoZe.Presentation.AppMaui.Resources.Strings.AppResources",
+            typeof(AlunoViewModel).Assembly)
+        .GetString(key, System.Globalization.CultureInfo.CurrentUICulture) ?? key;
+
+
     private readonly IAlunoService _alunoService;
     private readonly ILogradouroService _logradouroService;
 
@@ -50,7 +57,7 @@ public partial class AlunoViewModel : BaseViewModel
     {
         _alunoService = alunoService;
         _logradouroService = logradouroService;
-        Title = "Detalhes do Aluno";
+        Title = T("vmMsg000");
     }
 
     private static AlunoDto CriarAlunoPadrao() => new()
@@ -89,13 +96,13 @@ public partial class AlunoViewModel : BaseViewModel
         if (AlunoId > 0)
         {
             IsEditMode = true;
-            Title = "Editar Aluno";
+            Title = T("vmMsg001");
             await LoadAlunoAsync();
         }
         else
         {
             IsEditMode = false;
-            Title = "Novo Aluno";
+            Title = T("vmMsg002");
             Aluno = CriarAlunoPadrao();
             NotificarEndereco();
         }
@@ -120,7 +127,7 @@ public partial class AlunoViewModel : BaseViewModel
             if (aluno == null)
             {
                 await Shell.Current.DisplayAlertAsync(
-                    "Aviso", "Aluno não encontrado.", "OK");
+                    T("vmMsg003"), T("vmMsg004"), "OK");
                 return;
             }
 
@@ -133,7 +140,7 @@ public partial class AlunoViewModel : BaseViewModel
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Erro", $"Erro ao carregar aluno: {ex.Message}", "OK");
+                T("vmMsg005"), T("vmMsg006").Replace("{ex.Message}", ex.Message), "OK");
         }
         finally
         {
@@ -150,7 +157,7 @@ public partial class AlunoViewModel : BaseViewModel
         if (cpf.Length != 11)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Validação", "Informe os 11 dígitos do CPF.", "OK");
+                T("vmMsg007"), T("vmMsg008"), "OK");
             return;
         }
 
@@ -162,7 +169,7 @@ public partial class AlunoViewModel : BaseViewModel
             if (encontrado == null)
             {
                 await Shell.Current.DisplayAlertAsync(
-                    "Aviso", "CPF não encontrado.", "OK");
+                    T("vmMsg003"), T("vmMsg009"), "OK");
                 return;
             }
 
@@ -172,17 +179,17 @@ public partial class AlunoViewModel : BaseViewModel
             Aluno = encontrado;
             AlunoId = encontrado.Id;
             IsEditMode = true;
-            Title = "Editar Aluno";
+            Title = T("vmMsg001");
             ConfirmarSenha = string.Empty;
             NotificarEndereco();
 
             await Shell.Current.DisplayAlertAsync(
-                "Aviso", "Aluno encontrado! Dados carregados para edição.", "OK");
+                T("vmMsg003"), T("vmMsg010"), "OK");
         }
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Erro", $"Erro ao buscar CPF: {ex.Message}", "OK");
+                T("vmMsg005"), T("vmMsg011").Replace("{ex.Message}", ex.Message), "OK");
         }
         finally
         {
@@ -199,7 +206,7 @@ public partial class AlunoViewModel : BaseViewModel
         if (cep.Length != 8)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Validação", "Informe os 8 dígitos do CEP.", "OK");
+                T("vmMsg007"), T("vmMsg012"), "OK");
             return;
         }
 
@@ -211,7 +218,7 @@ public partial class AlunoViewModel : BaseViewModel
             if (endereco == null)
             {
                 await Shell.Current.DisplayAlertAsync(
-                    "Aviso", "CEP não cadastrado. Cadastre o logradouro primeiro.", "OK");
+                    T("vmMsg003"), T("vmMsg013"), "OK");
                 return;
             }
 
@@ -222,7 +229,7 @@ public partial class AlunoViewModel : BaseViewModel
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Erro", $"Erro ao buscar CEP: {ex.Message}", "OK");
+                T("vmMsg005"), T("vmMsg014").Replace("{ex.Message}", ex.Message), "OK");
         }
         finally
         {
@@ -236,10 +243,10 @@ public partial class AlunoViewModel : BaseViewModel
         try
         {
             var escolha = await Shell.Current.DisplayActionSheetAsync(
-                "Origem da Imagem", "Cancelar", "Remover Foto",
-                "Galeria", "Câmera");
+                T("vmMsg015"), T("vmMsg016"), T("vmMsg017"),
+                T("vmMsg018"), T("vmMsg019"));
 
-            if (escolha == "Remover Foto")
+            if (escolha == T("vmMsg017"))
             {
                 Aluno.Foto = null;
                 OnPropertyChanged(nameof(Aluno));
@@ -248,21 +255,21 @@ public partial class AlunoViewModel : BaseViewModel
 
             FileResult? resultado = null;
 
-            if (escolha == "Galeria")
+            if (escolha == T("vmMsg018"))
             {
                 resultado = await FilePicker.Default.PickAsync(
                     new PickOptions
                     {
-                        PickerTitle = "Selecione uma imagem",
+                        PickerTitle = T("vmMsg020"),
                         FileTypes = FilePickerFileType.Images
                     });
             }
-            else if (escolha == "Câmera")
+            else if (escolha == T("vmMsg019"))
             {
                 if (!MediaPicker.Default.IsCaptureSupported)
                 {
                     await Shell.Current.DisplayAlertAsync(
-                        "Aviso", "Câmera indisponível neste dispositivo.", "OK");
+                        T("vmMsg003"), T("vmMsg021"), "OK");
                     return;
                 }
 
@@ -285,7 +292,7 @@ public partial class AlunoViewModel : BaseViewModel
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Erro", $"Erro ao selecionar foto: {ex.Message}", "OK");
+                T("vmMsg005"), T("vmMsg022").Replace("{ex.Message}", ex.Message), "OK");
         }
     }
 
@@ -297,42 +304,42 @@ public partial class AlunoViewModel : BaseViewModel
         var erros = new List<string>();
 
         if (string.IsNullOrWhiteSpace(Aluno.Nome))
-            erros.Add("Nome é obrigatório.");
+            erros.Add(T("vmMsg023"));
 
         var cpf = new string((Aluno.Cpf ?? string.Empty)
             .Where(char.IsDigit).ToArray());
 
         if (cpf.Length != 11)
-            erros.Add("CPF deve conter 11 dígitos.");
+            erros.Add(T("vmMsg024"));
 
         var telefone = new string((Aluno.Telefone ?? string.Empty)
             .Where(char.IsDigit).ToArray());
 
         if (telefone.Length != 11)
-            erros.Add("Telefone deve conter 11 dígitos com DDD.");
+            erros.Add(T("vmMsg025"));
 
         if (Aluno.DataNascimento == default ||
             Aluno.DataNascimento > DateOnly.FromDateTime(DateTime.Today))
-            erros.Add("Informe uma data de nascimento válida.");
+            erros.Add(T("vmMsg026"));
 
         if (Aluno.Endereco == null ||
             string.IsNullOrWhiteSpace(Aluno.Endereco.Cep))
-            erros.Add("Endereço é obrigatório.");
+            erros.Add(T("vmMsg027"));
 
         if (string.IsNullOrWhiteSpace(Aluno.Numero))
-            erros.Add("Número do endereço é obrigatório.");
+            erros.Add(T("vmMsg028"));
 
         if (!IsEditMode && string.IsNullOrWhiteSpace(Aluno.Senha))
-            erros.Add("Senha é obrigatória no cadastro.");
+            erros.Add(T("vmMsg029"));
 
         if (!string.IsNullOrWhiteSpace(Aluno.Senha) &&
             Aluno.Senha != ConfirmarSenha)
-            erros.Add("A confirmação de senha não confere.");
+            erros.Add(T("vmMsg030"));
 
         if (erros.Count > 0)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Validação", string.Join("\n", erros), "OK");
+                T("vmMsg007"), string.Join("\n", erros), "OK");
             return;
         }
 
@@ -350,7 +357,7 @@ public partial class AlunoViewModel : BaseViewModel
                 if (endereco == null)
                 {
                     await Shell.Current.DisplayAlertAsync(
-                        "Endereço", "Cadastre o logradouro antes de salvar o aluno.", "OK");
+                        T("vmMsg031"), T("vmMsg032"), "OK");
                     return;
                 }
 
@@ -370,13 +377,13 @@ public partial class AlunoViewModel : BaseViewModel
             {
                 await _alunoService.AtualizarAsync(Aluno);
                 await Shell.Current.DisplayAlertAsync(
-                    "Sucesso", "Aluno atualizado com sucesso!", "OK");
+                    T("vmMsg033"), T("vmMsg034"), "OK");
             }
             else
             {
                 await _alunoService.AdicionarAsync(Aluno);
                 await Shell.Current.DisplayAlertAsync(
-                    "Sucesso", "Aluno cadastrado com sucesso!", "OK");
+                    T("vmMsg033"), T("vmMsg035"), "OK");
             }
 
             await Shell.Current.GoToAsync("..");
@@ -384,7 +391,7 @@ public partial class AlunoViewModel : BaseViewModel
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlertAsync(
-                "Erro", $"Erro ao salvar aluno: {ex.Message}", "OK");
+                T("vmMsg005"), T("vmMsg036").Replace("{ex.Message}", ex.Message), "OK");
         }
         finally
         {

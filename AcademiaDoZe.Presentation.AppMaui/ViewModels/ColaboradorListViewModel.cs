@@ -9,10 +9,17 @@ namespace AcademiaDoZe.Presentation.AppMaui.ViewModels;
 
 public partial class ColaboradorListViewModel : BaseViewModel
 {
+    private static readonly System.Resources.ResourceManager Resources = new(
+        "AcademiaDoZe.Presentation.AppMaui.Resources.Strings.AppResources",
+        typeof(ColaboradorListViewModel).Assembly);
+
+    private static string T(string key) =>
+        Resources.GetString(key, System.Globalization.CultureInfo.CurrentUICulture) ?? key;
+
     private readonly IColaboradorService _colaboradorService;
 
     public ObservableCollection<string> FilterTypes { get; } =
-        ["Nome", "CPF", "Id", "Email", "Tipo", "Vínculo"];
+        [T("strNome"), "CPF", "Id", "Email", T("strTipo"), T("strVinculo")];
 
     private ObservableCollection<ColaboradorDto> _colaboradores = [];
     public ObservableCollection<ColaboradorDto> Colaboradores
@@ -35,7 +42,7 @@ public partial class ColaboradorListViewModel : BaseViewModel
         set => SetProperty(ref _searchText, value);
     }
 
-    private string _selectedFilterType = "Nome";
+    private string _selectedFilterType = T("strNome");
     public string SelectedFilterType
     {
         get => _selectedFilterType;
@@ -45,7 +52,7 @@ public partial class ColaboradorListViewModel : BaseViewModel
     public ColaboradorListViewModel(IColaboradorService colaboradorService)
     {
         _colaboradorService = colaboradorService;
-        Title = "Colaboradores";
+        Title = T("listMsg012");
     }
 
     [RelayCommand]
@@ -57,7 +64,7 @@ public partial class ColaboradorListViewModel : BaseViewModel
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlertAsync("Erro", $"Erro ao navegar para tela de cadastro: {ex.Message}", "OK");
+            await Shell.Current.DisplayAlertAsync(T("listMsg001"), T("listMsg013").Replace("{ex.Message}", ex.Message), "OK");
         }
     }
 
@@ -72,7 +79,7 @@ public partial class ColaboradorListViewModel : BaseViewModel
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlertAsync("Erro", $"Erro ao navegar para tela de edição: {ex.Message}", "OK");
+            await Shell.Current.DisplayAlertAsync(T("listMsg001"), T("listMsg014").Replace("{ex.Message}", ex.Message), "OK");
         }
     }
 
@@ -100,7 +107,7 @@ public partial class ColaboradorListViewModel : BaseViewModel
             {
                 resultados = await _colaboradorService.ObterTodosAsync(cts.Token) ?? [];
             }
-            else if (SelectedFilterType == "Nome")
+            else if (SelectedFilterType == FilterTypes[0])
             {
                 var todos = await _colaboradorService.ObterTodosAsync(cts.Token) ?? [];
                 resultados = todos.Where(c =>
@@ -117,7 +124,7 @@ public partial class ColaboradorListViewModel : BaseViewModel
             {
                 if (!int.TryParse(SearchText.Trim(), out int id) || id <= 0)
                 {
-                    await Shell.Current.DisplayAlertAsync("Validação", "Informe um ID válido.", "OK");
+                    await Shell.Current.DisplayAlertAsync(T("listMsg015"), T("listMsg016"), "OK");
                     return;
                 }
 
@@ -129,7 +136,7 @@ public partial class ColaboradorListViewModel : BaseViewModel
                 var colaborador = await _colaboradorService.ObterPorEmailAsync(SearchText.Trim(), cts.Token);
                 if (colaborador != null) resultados = [colaborador];
             }
-            else if (SelectedFilterType == "Tipo")
+            else if (SelectedFilterType == FilterTypes[4])
             {
                 var tipos = Enum.GetValues<AppColaboradorTipo>()
                     .Where(t => t.ToString().Contains(SearchText.Trim(), StringComparison.OrdinalIgnoreCase)
@@ -145,7 +152,7 @@ public partial class ColaboradorListViewModel : BaseViewModel
 
                 resultados = lista.DistinctBy(c => c.Id);
             }
-            else if (SelectedFilterType == "Vínculo")
+            else if (SelectedFilterType == FilterTypes[5])
             {
                 var vinculos = Enum.GetValues<AppColaboradorVinculo>()
                     .Where(v => v.ToString().Contains(SearchText.Trim(), StringComparison.OrdinalIgnoreCase)
@@ -170,11 +177,11 @@ public partial class ColaboradorListViewModel : BaseViewModel
         }
         catch (OperationCanceledException)
         {
-            await Shell.Current.DisplayAlertAsync("Tempo Esgotado", "A busca expirou.", "OK");
+            await Shell.Current.DisplayAlertAsync(T("listMsg017"), T("listMsg018"), "OK");
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlertAsync("Erro", $"Erro ao buscar colaboradores: {ex.Message}", "OK");
+            await Shell.Current.DisplayAlertAsync(T("listMsg001"), T("listMsg019").Replace("{ex.Message}", ex.Message), "OK");
         }
         finally
         {
@@ -206,11 +213,11 @@ public partial class ColaboradorListViewModel : BaseViewModel
         }
         catch (OperationCanceledException)
         {
-            await Shell.Current.DisplayAlertAsync("Tempo Esgotado", "O carregamento expirou.", "OK");
+            await Shell.Current.DisplayAlertAsync(T("listMsg017"), T("listMsg020"), "OK");
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlertAsync("Erro", $"Erro ao carregar colaboradores: {ex.Message}", "OK");
+            await Shell.Current.DisplayAlertAsync(T("listMsg001"), T("listMsg021").Replace("{ex.Message}", ex.Message), "OK");
         }
         finally
         {
@@ -225,9 +232,9 @@ public partial class ColaboradorListViewModel : BaseViewModel
         if (colaborador == null) return;
 
         bool confirmar = await Shell.Current.DisplayAlertAsync(
-            "Confirmar Exclusão",
-            $"Deseja realmente excluir o colaborador {colaborador.Nome}?",
-            "Sim", "Não");
+            T("listMsg004"),
+            T("listMsg022").Replace("{colaborador.Nome}", colaborador.Nome),
+            T("listMsg006"), T("listMsg007"));
 
         if (!confirmar) return;
 
@@ -241,16 +248,16 @@ public partial class ColaboradorListViewModel : BaseViewModel
             if (sucesso)
             {
                 Colaboradores.Remove(colaborador);
-                await Shell.Current.DisplayAlertAsync("Sucesso", "Colaborador excluído!", "OK");
+                await Shell.Current.DisplayAlertAsync(T("listMsg008"), T("listMsg023"), "OK");
             }
             else
             {
-                await Shell.Current.DisplayAlertAsync("Erro", "Não foi possível excluir.", "OK");
+                await Shell.Current.DisplayAlertAsync(T("listMsg001"), T("listMsg024"), "OK");
             }
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlertAsync("Erro", $"Erro ao excluir: {ex.Message}", "OK");
+            await Shell.Current.DisplayAlertAsync(T("listMsg001"), T("listMsg025").Replace("{ex.Message}", ex.Message), "OK");
         }
         finally
         {

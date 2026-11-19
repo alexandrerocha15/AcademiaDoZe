@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" ?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Helpers"
              x:Class="AcademiaDoZe.Presentation.AppMaui.Views.ConfigPage"
-             Title="Configurações">
+             Title="{helpers:Translate strConfiguracao}">
 
     <ScrollView>
         <StackLayout Spacing="20">
@@ -12,11 +12,11 @@
             <Border Style="{StaticResource CardBorder}" Margin="15,10">
                 <StackLayout Spacing="15">
 
-                    <Label Text="Tema"
+                    <Label Text="{helpers:Translate strTema}"
                            Style="{StaticResource SubHeadline}"/>
 
                     <StackLayout Spacing="5">
-                        <Label Text="Tema"/>
+                        <Label Text="{helpers:Translate strTema}"/>
 
                         <Picker x:Name="TemaPicker">
                             <Picker.ItemsSource>
@@ -31,13 +31,13 @@
 
                     <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
                         <Button Grid.Column="0"
-                                Text="Cancelar"
+                                Text="{helpers:Translate strCancelar}"
                                 Clicked="OnCancelarClicked"
                                 Style="{StaticResource ButtonSecondary}"
                                 HeightRequest="45"/>
 
                         <Button Grid.Column="1"
-                                Text="Salvar Tema"
+                                Text="{helpers:Translate strSalvarTema}"
                                 Clicked="OnSalvarTemaClicked"
                                 Style="{StaticResource ButtonPrimary}"
                                 HeightRequest="45"/>
@@ -50,12 +50,12 @@
             <Border Style="{StaticResource CardBorder}" Margin="15,10">
                 <StackLayout Spacing="15">
 
-                    <Label Text="Credenciais do Banco"
+                    <Label Text="{helpers:Translate strCredenciaisBanco}"
                            Style="{StaticResource SubHeadline}"/>
 
                     <Grid ColumnDefinitions="*" ColumnSpacing="10">
                         <StackLayout Spacing="5" Grid.Column="0">
-                            <Label Text="Tipo de Gerenciador"/>
+                            <Label Text="{helpers:Translate strTipoGerenciador}"/>
 
                             <Picker x:Name="DatabaseTypePicker"
                                     SelectedIndexChanged="OnDatabaseTypeChanged"/>
@@ -77,7 +77,7 @@
                                  Spacing="5"
                                  IsVisible="False">
 
-                        <Label Text="Caminho / Arquivo do Banco (.db)"/>
+                        <Label Text="{helpers:Translate strCaminhoBanco}"/>
 
                         <Entry x:Name="SqliteCaminhoEntry"
                                Placeholder="Ex: C:\DEV\AcademiaDoZe\db_academia_do_ze.db"/>
@@ -131,13 +131,13 @@
                           Margin="15,10">
 
                         <Button Grid.Column="0"
-                                Text="Cancelar"
+                                Text="{helpers:Translate strCancelar}"
                                 Clicked="OnCancelarClicked"
                                 Style="{StaticResource ButtonSecondary}"
                                 HeightRequest="45"/>
 
                         <Button Grid.Column="1"
-                                Text="Salvar BD"
+                                Text="{helpers:Translate strSalvarBanco}"
                                 Clicked="OnSalvarBdClicked"
                                 Style="{StaticResource ButtonPrimary}"
                                 HeightRequest="45"/>
@@ -145,6 +145,26 @@
 
                 </StackLayout>
             </Border>
+
+            <!-- Idioma -->
+            <VerticalStackLayout Spacing="10" Padding="10">
+
+                <Label Text="{helpers:Translate strIdiomaAplicativo}"
+                       FontSize="18"
+                       FontAttributes="Bold"/>
+
+                <Picker x:Name="IdiomaPicker"
+                        Title="{helpers:Translate strSelecionarIdioma}"
+                        SelectedIndexChanged="OnIdiomaSelectedIndexChanged">
+
+                    <Picker.Items>
+                        <x:String>Português (Brasil)</x:String>
+                        <x:String>English (United States)</x:String>
+                        <x:String>Español (España)</x:String>
+                    </Picker.Items>
+
+                </Picker>
+            </VerticalStackLayout>
 
         </StackLayout>
     </ScrollView>

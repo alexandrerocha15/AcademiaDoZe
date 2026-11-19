@@ -2,6 +2,8 @@
 using AcademiaDoZe.Presentation.AppMaui.Views;
 using AcademiaDoZe.Presentation.AppMaui.Configuration;
 using Microsoft.Extensions.Logging;
+using AcademiaDoZe.Presentation.AppMaui.Helpers;
+using System.Globalization;
 
 
 namespace AcademiaDoZe.Presentation.AppMaui;
@@ -10,6 +12,18 @@ public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {
+        var culturaSalva = Preferences.Get(
+    "Cultura",
+    CultureInfo.InstalledUICulture.Name);
+
+        var culturaInicial = culturaSalva.StartsWith("en", StringComparison.OrdinalIgnoreCase)
+            ? "en-US"
+            : culturaSalva.StartsWith("es", StringComparison.OrdinalIgnoreCase)
+                ? "es-ES"
+                : "pt-BR";
+
+        LocalizationManager.Instance.AlterarCultura(culturaInicial);
+
         var builder = MauiApp.CreateBuilder();
 
         builder
@@ -34,6 +48,7 @@ public static class MauiProgram
         builder.Services.AddTransient<AlunoViewModel>();
         builder.Services.AddTransient<MatriculaListViewModel>();
         builder.Services.AddTransient<MatriculaViewModel>();
+        builder.Services.AddSingleton(LocalizationManager.Instance);
 
         // Registrar Views
         builder.Services.AddTransient<DashboardListPage>();

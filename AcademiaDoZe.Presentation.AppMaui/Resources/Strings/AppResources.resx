@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="strTitulo" xml:space="preserve">
+    <value>Academia do Zé</value>
+  </data>
+  <data name="strSubTitulo" xml:space="preserve">
+    <value>Sistema de Gerenciamento</value>
+  </data>
+  <data name="strDashboard" xml:space="preserve">
+    <value>Painel</value>
+  </data>
+  <data name="strLogradouro" xml:space="preserve">
+    <value>Logradouros</value>
+  </data>
+  <data name="strColaborador" xml:space="preserve">
+    <value>Colaboradores</value>
+  </data>
+  <data name="strAluno" xml:space="preserve">
+    <value>Alunos</value>
+  </data>
+  <data name="strMatricula" xml:space="preserve">
+    <value>Matrículas</value>
+  </data>
+  <data name="strControleAcesso" xml:space="preserve">
+    <value>Controle de Acesso</value>
+  </data>
+  <data name="strConfiguracao" xml:space="preserve">
+    <value>Configurações</value>
+  </data>
+  <data name="strErro" xml:space="preserve">
+    <value>Erro</value>
+  </data>
+  <data name="strSucesso" xml:space="preserve">
+    <value>Sucesso</value>
+  </data>
+  <data name="strBandeira" xml:space="preserve">
+    <value>br.png</value>
+  </data>
+  <data name="strTema" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="strSalvarTema" xml:space="preserve">
+    <value>Salvar Tema</value>
+  </data>
+  <data name="strCancelar" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="strCredenciaisBanco" xml:space="preserve">
+    <value>Credenciais do Banco</value>
+  </data>
+  <data name="strTipoGerenciador" xml:space="preserve">
+    <value>Tipo de Gerenciador</value>
+  </data>
+  <data name="strSalvarBanco" xml:space="preserve">
+    <value>Salvar BD</value>
+  </data>
+  <data name="strIdiomaAplicativo" xml:space="preserve">
+    <value>Idioma do aplicativo</value>
+  </data>
+  <data name="strSelecionarIdioma" xml:space="preserve">
+    <value>Selecione o idioma</value>
+  </data>
+  <data name="strCaminhoBanco" xml:space="preserve">
+    <value>Caminho / Arquivo do Banco (.db)</value>
+  </data>
+  <data name="strSucessoSalvar" xml:space="preserve">
+    <value>Dados salvos com sucesso!</value>
+  </data>
+  <data name="strBuscarAluno" xml:space="preserve">
+    <value>Buscar aluno...</value>
+  </data>
+  <data name="strBuscar" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="strEditar" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="strExcluir" xml:space="preserve">
+    <value>Excluir</value>
+  </data>
+  <data name="strNenhumAluno" xml:space="preserve">
+    <value>Nenhum aluno encontrado.</value>
+  </data>
+  <data name="strNenhumColaborador" xml:space="preserve">
+    <value>Nenhum colaborador encontrado</value>
+  </data>
+  <data name="strAdicionarColaborador" xml:space="preserve">
+    <value>Adicionar Colaborador</value>
+  </data>
+  <data name="strBuscarGenerico" xml:space="preserve">
+    <value>Buscar...</value>
+  </data>
+  <data name="strBuscarCpf" xml:space="preserve">
+    <value>Buscar CPF</value>
+  </data>
+  <data name="strDadosPessoais" xml:space="preserve">
+    <value>Dados Pessoais</value>
+  </data>
+  <data name="strNome" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="strNomeCompleto" xml:space="preserve">
+    <value>Nome completo</value>
+  </data>
+  <data name="strNascimento" xml:space="preserve">
+    <value>Data de Nascimento</value>
+  </data>
+  <data name="strTelefone" xml:space="preserve">
+    <value>Telefone</value>
+  </data>
+  <data name="strEmailInvalido" xml:space="preserve">
+    <value>Formato de e-mail inválido. Use nome@dominio.com</value>
+  </data>
+  <data name="strSenha" xml:space="preserve">
+    <value>Senha</value>
+  </data>
+  <data name="strDigiteSenha" xml:space="preserve">
+    <value>Digite a senha</value>
+  </data>
+  <data name="strMostrarSenha" xml:space="preserve">
+    <value>Mostrar senha</value>
+  </data>
+  <data name="strSenhaAtual" xml:space="preserve">
+    <value>Deixe em branco para manter a senha atual.</value>
+  </data>
+  <data name="strConfirmarSenha" xml:space="preserve">
+    <value>Confirmar Senha</value>
+  </data>
+  <data name="strConfirmeSenha" xml:space="preserve">
+    <value>Confirme a senha</value>
+  </data>
+  <data name="strFoto" xml:space="preserve">
+    <value>Foto</value>
+  </data>
+  <data name="strSelecionarImagem" xml:space="preserve">
+    <value>Selecionar Imagem</value>
+  </data>
+  <data name="strEndereco" xml:space="preserve">
+    <value>Endereço</value>
+  </data>
+  <data name="strBuscarCep" xml:space="preserve">
+    <value>Buscar CEP</value>
+  </data>
+  <data name="strSemLogradouro" xml:space="preserve">
+    <value>Nenhum logradouro vinculado. Informe o CEP e clique em Buscar CEP.</value>
+  </data>
+  <data name="strLogradouroVinculado" xml:space="preserve">
+    <value>Logradouro vinculado</value>
+  </data>
+  <data name="strNumero" xml:space="preserve">
+    <value>Número</value>
+  </data>
+  <data name="strComplemento" xml:space="preserve">
+    <value>Complemento</value>
+  </data>
+  <data name="strComplementoOpcional" xml:space="preserve">
+    <value>Complemento (opcional)</value>
+  </data>
+  <data name="strSalvar" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="strDadosTrabalho" xml:space="preserve">
+    <value>Dados de Trabalho</value>
+  </data>
+  <data name="strDataAdmissao" xml:space="preserve">
+    <value>Data de Admissão</value>
+  </data>
+  <data name="strTipo" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="strVinculo" xml:space="preserve">
+    <value>Vínculo</value>
+  </data>
+  <data name="vmMsg000" xml:space="preserve">
+    <value>Detalhes do Aluno</value>
+  </data>
+  <data name="vmMsg001" xml:space="preserve">
+    <value>Editar Aluno</value>
+  </data>
+  <data name="vmMsg002" xml:space="preserve">
+    <value>Novo Aluno</value>
+  </data>
+  <data name="vmMsg003" xml:space="preserve">
+    <value>Aviso</value>
+  </data>
+  <data name="vmMsg004" xml:space="preserve">
+    <value>Aluno não encontrado.</value>
+  </data>
+  <data name="vmMsg005" xml:space="preserve">
+    <value>Erro</value>
+  </data>
+  <data name="vmMsg006" xml:space="preserve">
+    <value>Erro ao carregar aluno: {ex.Message}</value>
+  </data>
+  <data name="vmMsg007" xml:space="preserve">
+    <value>Validação</value>
+  </data>
+  <data name="vmMsg008" xml:space="preserve">
+    <value>Informe os 11 dígitos do CPF.</value>
+  </data>
+  <data name="vmMsg009" xml:space="preserve">
+    <value>CPF não encontrado.</value>
+  </data>
+  <data name="vmMsg010" xml:space="preserve">
+    <value>Aluno encontrado! Dados carregados para edição.</value>
+  </data>
+  <data name="vmMsg011" xml:space="preserve">
+    <value>Erro ao buscar CPF: {ex.Message}</value>
+  </data>
+  <data name="vmMsg012" xml:space="preserve">
+    <value>Informe os 8 dígitos do CEP.</value>
+  </data>
+  <data name="vmMsg013" xml:space="preserve">
+    <value>CEP não cadastrado. Cadastre o logradouro primeiro.</value>
+  </data>
+  <data name="vmMsg014" xml:space="preserve">
+    <value>Erro ao buscar CEP: {ex.Message}</value>
+  </data>
+  <data name="vmMsg015" xml:space="preserve">
+    <value>Origem da Imagem</value>
+  </data>
+  <data name="vmMsg016" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="vmMsg017" xml:space="preserve">
+    <value>Remover Foto</value>
+  </data>
+  <data name="vmMsg018" xml:space="preserve">
+    <value>Galeria</value>
+  </data>
+  <data name="vmMsg019" xml:space="preserve">
+    <value>Câmera</value>
+  </data>
+  <data name="vmMsg020" xml:space="preserve">
+    <value>Selecione uma imagem</value>
+  </data>
+  <data name="vmMsg021" xml:space="preserve">
+    <value>Câmera indisponível neste dispositivo.</value>
+  </data>
+  <data name="vmMsg022" xml:space="preserve">
+    <value>Erro ao selecionar foto: {ex.Message}</value>
+  </data>
+  <data name="vmMsg023" xml:space="preserve">
+    <value>Nome é obrigatório.</value>
+  </data>
+  <data name="vmMsg024" xml:space="preserve">
+    <value>CPF deve conter 11 dígitos.</value>
+  </data>
+  <data name="vmMsg025" xml:space="preserve">
+    <value>Telefone deve conter 11 dígitos com DDD.</value>
+  </data>
+  <data name="vmMsg026" xml:space="preserve">
+    <value>Informe uma data de nascimento válida.</value>
+  </data>
+  <data name="vmMsg027" xml:space="preserve">
+    <value>Endereço é obrigatório.</value>
+  </data>
+  <data name="vmMsg028" xml:space="preserve">
+    <value>Número do endereço é obrigatório.</value>
+  </data>
+  <data name="vmMsg029" xml:space="preserve">
+    <value>Senha é obrigatória no cadastro.</value>
+  </data>
+  <data name="vmMsg030" xml:space="preserve">
+    <value>A confirmação de senha não confere.</value>
+  </data>
+  <data name="vmMsg031" xml:space="preserve">
+    <value>Endereço</value>
+  </data>
+  <data name="vmMsg032" xml:space="preserve">
+    <value>Cadastre o logradouro antes de salvar o aluno.</value>
+  </data>
+  <data name="vmMsg033" xml:space="preserve">
+    <value>Sucesso</value>
+  </data>
+  <data name="vmMsg034" xml:space="preserve">
+    <value>Aluno atualizado com sucesso!</value>
+  </data>
+  <data name="vmMsg035" xml:space="preserve">
+    <value>Aluno cadastrado com sucesso!</value>
+  </data>
+  <data name="vmMsg036" xml:space="preserve">
+    <value>Erro ao salvar aluno: {ex.Message}</value>
+  </data>
+  <data name="vmMsg037" xml:space="preserve">
+    <value>Detalhes do Colaborador</value>
+  </data>
+  <data name="vmMsg038" xml:space="preserve">
+    <value>Editar Colaborador</value>
+  </data>
+  <data name="vmMsg039" xml:space="preserve">
+    <value>Novo Colaborador</value>
+  </data>
+  <data name="vmMsg040" xml:space="preserve">
+    <value>Tempo Esgotado</value>
+  </data>
+  <data name="vmMsg041" xml:space="preserve">
+    <value>O carregamento do colaborador expirou. Verifique a conexão.</value>
+  </data>
+  <data name="vmMsg042" xml:space="preserve">
+    <value>Erro ao carregar colaborador: {ex.Message}</value>
+  </data>
+  <data name="vmMsg043" xml:space="preserve">
+    <value>Informe o CPF para realizar a busca.</value>
+  </data>
+  <data name="vmMsg044" xml:space="preserve">
+    <value>O CPF deve conter exatamente 11 dígitos numéricos.</value>
+  </data>
+  <data name="vmMsg045" xml:space="preserve">
+    <value>Colaborador já cadastrado! Dados carregados para edição.</value>
+  </data>
+  <data name="vmMsg046" xml:space="preserve">
+    <value>A busca por CPF expirou. Verifique a conexão.</value>
+  </data>
+  <data name="vmMsg047" xml:space="preserve">
+    <value>Informe o CEP para realizar a busca.</value>
+  </data>
+  <data name="vmMsg048" xml:space="preserve">
+    <value>O CEP deve conter exatamente 8 dígitos numéricos.</value>
+  </data>
+  <data name="vmMsg049" xml:space="preserve">
+    <value>CEP encontrado! Endereço preenchido automaticamente.</value>
+  </data>
+  <data name="vmMsg050" xml:space="preserve">
+    <value>CEP não encontrado no cadastro de logradouros. Cadastre o logradouro primeiro.</value>
+  </data>
+  <data name="vmMsg051" xml:space="preserve">
+    <value>A busca de CEP expirou. Verifique a conexão com o banco.</value>
+  </data>
+  <data name="vmMsg052" xml:space="preserve">
+    <value>Endereço Obrigatório</value>
+  </data>
+  <data name="vmMsg053" xml:space="preserve">
+    <value>O CEP informado não está cadastrado como Logradouro. Cadastre-o previamente.</value>
+  </data>
+  <data name="vmMsg054" xml:space="preserve">
+    <value>Informe um CEP válido com 8 dígitos para o endereço.</value>
+  </data>
+  <data name="vmMsg055" xml:space="preserve">
+    <value>Colaborador atualizado com sucesso!</value>
+  </data>
+  <data name="vmMsg056" xml:space="preserve">
+    <value>Colaborador criado com sucesso!</value>
+  </data>
+  <data name="vmMsg057" xml:space="preserve">
+    <value>A gravação do colaborador expirou. Verifique a conexão.</value>
+  </data>
+  <data name="vmMsg058" xml:space="preserve">
+    <value>Regra de Negócio</value>
+  </data>
+  <data name="vmMsg059" xml:space="preserve">
+    <value>Erro ao salvar colaborador: {ex.Message}</value>
+  </data>
+  <data name="vmMsg060" xml:space="preserve">
+    <value>Captura de foto não suportada neste dispositivo.</value>
+  </data>
+  <data name="vmMsg061" xml:space="preserve">
+    <value>Erro ao selecionar imagem: {ex.Message}</value>
+  </data>
+  <data name="vmMsg062" xml:space="preserve">
+    <value>• Nome é obrigatório.</value>
+  </data>
+  <data name="vmMsg063" xml:space="preserve">
+    <value>• CPF é obrigatório.</value>
+  </data>
+  <data name="vmMsg064" xml:space="preserve">
+    <value>• CPF deve conter exatamente 11 dígitos numéricos.</value>
+  </data>
+  <data name="vmMsg065" xml:space="preserve">
+    <value>• Data de nascimento é obrigatória.</value>
+  </data>
+  <data name="vmMsg066" xml:space="preserve">
+    <value>• Data de nascimento não pode ser futura.</value>
+  </data>
+  <data name="vmMsg067" xml:space="preserve">
+    <value>• O colaborador deve ter no mínimo 12 anos de idade.</value>
+  </data>
+  <data name="vmMsg068" xml:space="preserve">
+    <value>• Telefone é obrigatório.</value>
+  </data>
+  <data name="vmMsg069" xml:space="preserve">
+    <value>• Telefone deve conter 11 dígitos numéricos com DDD.</value>
+  </data>
+  <data name="vmMsg070" xml:space="preserve">
+    <value>• Formato de e-mail inválido.</value>
+  </data>
+  <data name="vmMsg071" xml:space="preserve">
+    <value>• Senha é obrigatória no cadastro.</value>
+  </data>
+  <data name="vmMsg072" xml:space="preserve">
+    <value>• A senha deve ter no mínimo 6 caracteres e uma letra maiúscula.</value>
+  </data>
+  <data name="vmMsg073" xml:space="preserve">
+    <value>• A confirmação de senha não confere.</value>
+  </data>
+  <data name="vmMsg074" xml:space="preserve">
+    <value>• A nova senha deve ter no mínimo 6 caracteres e uma letra maiúscula.</value>
+  </data>
+  <data name="vmMsg075" xml:space="preserve">
+    <value>• CEP do endereço é obrigatório.</value>
+  </data>
+  <data name="vmMsg076" xml:space="preserve">
+    <value>• Número do endereço é obrigatório.</value>
+  </data>
+  <data name="vmMsg077" xml:space="preserve">
+    <value>• Data de admissão é obrigatória.</value>
+  </data>
+  <data name="vmMsg078" xml:space="preserve">
+    <value>• Data de admissão não pode ser futura.</value>
+  </data>
+  <data name="vmMsg079" xml:space="preserve">
+    <value>• Colaborador Administrador deve ter vínculo CLT.</value>
+  </data>
+  <data name="vmMsg080" xml:space="preserve">
+    <value>Por favor, corrija os seguintes campos:
+
+</value>
+  </data>
+  <data name="vmMsg081" xml:space="preserve">
+    <value>Erros de Validação</value>
+  </data>
+  <data name="listMsg000" xml:space="preserve">
+    <value>Alunos</value>
+  </data>
+  <data name="listMsg001" xml:space="preserve">
+    <value>Erro</value>
+  </data>
+  <data name="listMsg002" xml:space="preserve">
+    <value>Erro ao carregar alunos: {ex.Message}</value>
+  </data>
+  <data name="listMsg003" xml:space="preserve">
+    <value>Erro ao buscar alunos: {ex.Message}</value>
+  </data>
+  <data name="listMsg004" xml:space="preserve">
+    <value>Confirmar Exclusão</value>
+  </data>
+  <data name="listMsg005" xml:space="preserve">
+    <value>Deseja realmente excluir o aluno {aluno.Nome}?</value>
+  </data>
+  <data name="listMsg006" xml:space="preserve">
+    <value>Sim</value>
+  </data>
+  <data name="listMsg007" xml:space="preserve">
+    <value>Não</value>
+  </data>
+  <data name="listMsg008" xml:space="preserve">
+    <value>Sucesso</value>
+  </data>
+  <data name="listMsg009" xml:space="preserve">
+    <value>Aluno excluído!</value>
+  </data>
+  <data name="listMsg010" xml:space="preserve">
+    <value>Não foi possível excluir o aluno.</value>
+  </data>
+  <data name="listMsg011" xml:space="preserve">
+    <value>Erro ao excluir aluno: {ex.Message}</value>
+  </data>
+  <data name="listMsg012" xml:space="preserve">
+    <value>Colaboradores</value>
+  </data>
+  <data name="listMsg013" xml:space="preserve">
+    <value>Erro ao navegar para tela de cadastro: {ex.Message}</value>
+  </data>
+  <data name="listMsg014" xml:space="preserve">
+    <value>Erro ao navegar para tela de edição: {ex.Message}</value>
+  </data>
+  <data name="listMsg015" xml:space="preserve">
+    <value>Validação</value>
+  </data>
+  <data name="listMsg016" xml:space="preserve">
+    <value>Informe um ID válido.</value>
+  </data>
+  <data name="listMsg017" xml:space="preserve">
+    <value>Tempo Esgotado</value>
+  </data>
+  <data name="listMsg018" xml:space="preserve">
+    <value>A busca expirou.</value>
+  </data>
+  <data name="listMsg019" xml:space="preserve">
+    <value>Erro ao buscar colaboradores: {ex.Message}</value>
+  </data>
+  <data name="listMsg020" xml:space="preserve">
+    <value>O carregamento expirou.</value>
+  </data>
+  <data name="listMsg021" xml:space="preserve">
+    <value>Erro ao carregar colaboradores: {ex.Message}</value>
+  </data>
+  <data name="listMsg022" xml:space="preserve">
+    <value>Deseja realmente excluir o colaborador {colaborador.Nome}?</value>
+  </data>
+  <data name="listMsg023" xml:space="preserve">
+    <value>Colaborador excluído!</value>
+  </data>
+  <data name="listMsg024" xml:space="preserve">
+    <value>Não foi possível excluir.</value>
+  </data>
+  <data name="listMsg025" xml:space="preserve">
+    <value>Erro ao excluir: {ex.Message}</value>
+  </data>
+  <data name="strBuscar001" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="strEditar002" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="strExcluir003" xml:space="preserve">
+    <value>Excluir</value>
+  </data>
+  <data name="strCancelar004" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="strSalvar005" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="strRemover" xml:space="preserve">
+    <value>Remover</value>
+  </data>
+  <data name="strNomeRua" xml:space="preserve">
+    <value>Nome/Rua</value>
+  </data>
+  <data name="strBairro" xml:space="preserve">
+    <value>Bairro</value>
+  </data>
+  <data name="strCidade" xml:space="preserve">
+    <value>Cidade</value>
+  </data>
+  <data name="strEstado" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="strPais" xml:space="preserve">
+    <value>País</value>
+  </data>
+  <data name="strNome012" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="strBuscarCEP" xml:space="preserve">
+    <value>Buscar CEP</value>
+  </data>
+  <data name="strDigiteOValor" xml:space="preserve">
+    <value>Digite o valor...</value>
+  </data>
+  <data name="strNenhumLogradouroEncontrado" xml:space="preserve">
+    <value>Nenhum logradouro encontrado</value>
+  </data>
+  <data name="strAdicionarPrimeiroLogradouro" xml:space="preserve">
+    <value>Adicionar Primeiro Logradouro</value>
+  </data>
+  <data name="strDigiteONomeDaRua" xml:space="preserve">
+    <value>Digite o nome da rua...</value>
+  </data>
+  <data name="strDigiteOBairro" xml:space="preserve">
+    <value>Digite o bairro...</value>
+  </data>
+  <data name="strDigiteACidade" xml:space="preserve">
+    <value>Digite a cidade...</value>
+  </data>
+  <data name="strDigiteOEstado" xml:space="preserve">
+    <value>Digite o estado...</value>
+  </data>
+  <data name="strDigiteOPais" xml:space="preserve">
+    <value>Digite o país...</value>
+  </data>
+  <data name="strBuscarMatricula" xml:space="preserve">
+    <value>Buscar matrícula...</value>
+  </data>
+  <data name="strNenhumaMatriculaEncontrada" xml:space="preserve">
+    <value>Nenhuma matrícula encontrada.</value>
+  </data>
+  <data name="strNovaMatricula" xml:space="preserve">
+    <value>Nova matrícula</value>
+  </data>
+  <data name="strAlunoDaMatricula" xml:space="preserve">
+    <value>Aluno da Matrícula</value>
+  </data>
+  <data name="strCPFDoAluno" xml:space="preserve">
+    <value>CPF do Aluno</value>
+  </data>
+  <data name="strBusqueUmAlunoCadastradoPeloCPF" xml:space="preserve">
+    <value>Busque um aluno cadastrado pelo CPF.</value>
+  </data>
+  <data name="strPlanoEVigencia" xml:space="preserve">
+    <value>Plano e Vigência</value>
+  </data>
+  <data name="strTipoDePlano" xml:space="preserve">
+    <value>Tipo de Plano</value>
+  </data>
+  <data name="strDataDeInicio" xml:space="preserve">
+    <value>Data de Início</value>
+  </data>
+  <data name="strDataDeTerminoAutomatica" xml:space="preserve">
+    <value>Data de Término (automática)</value>
+  </data>
+  <data name="strObjetivoDaMatricula" xml:space="preserve">
+    <value>Objetivo da Matrícula</value>
+  </data>
+  <data name="strExHipertrofiaCondicionamento" xml:space="preserve">
+    <value>Ex.: Hipertrofia, condicionamento...</value>
+  </data>
+  <data name="strRestricoesMedicas" xml:space="preserve">
+    <value>Restrições Médicas</value>
+  </data>
+  <data name="strSelecioneTodasAsRestricoesAplicaveis" xml:space="preserve">
+    <value>Selecione todas as restrições aplicáveis.</value>
+  </data>
+  <data name="strDiabetes" xml:space="preserve">
+    <value>Diabetes</value>
+  </data>
+  <data name="strPressaoAlta" xml:space="preserve">
+    <value>Pressão alta</value>
+  </data>
+  <data name="strLabirintite" xml:space="preserve">
+    <value>Labirintite</value>
+  </data>
+  <data name="strAlergias" xml:space="preserve">
+    <value>Alergias</value>
+  </data>
+  <data name="strProblemasRespiratorios" xml:space="preserve">
+    <value>Problemas respiratórios</value>
+  </data>
+  <data name="strRemedioContinuo" xml:space="preserve">
+    <value>Remédio contínuo</value>
+  </data>
+  <data name="strObservacoes" xml:space="preserve">
+    <value>Observações</value>
+  </data>
+  <data name="strDescrevaAsRestricoesMedicas" xml:space="preserve">
+    <value>Descreva as restrições médicas...</value>
+  </data>
+  <data name="strLaudoMedicoPDF" xml:space="preserve">
+    <value>Laudo Médico (PDF)</value>
+  </data>
+  <data name="strAnexarLaudo" xml:space="preserve">
+    <value>Anexar Laudo</value>
+  </data>
+  <data name="strLogradouroID0" xml:space="preserve">
+    <value>Logradouro ID: {0}</value>
+  </data>
+  <data name="strErroAoPesquisarMatriculas0">
+    <value>Erro ao pesquisar matrículas: {0}</value>
+  </data>
+  <data name="strDesejaExcluirAMatricula0">
+    <value>Deseja excluir a matrícula {0}?</value>
+  </data>
+  <data name="strErroAoExcluirMatricula0">
+    <value>Erro ao excluir matrícula: {0}</value>
+  </data>
+  <data name="strErroAoCarregarMatricula0">
+    <value>Erro ao carregar matrícula: {0}</value>
+  </data>
+  <data name="strErroAoBuscarAluno0">
+    <value>Erro ao buscar aluno: {0}</value>
+  </data>
+  <data name="strErroAoSalvarMatricula0">
+    <value>Erro ao salvar matrícula: {0}</value>
+  </data>
+  <data name="strErroAoAnexarLaudo0">
+    <value>Erro ao anexar laudo: {0}</value>
+  </data>
+  <data name="strErroAoNavegarParaTelaDe">
+    <value>Erro ao navegar para tela de cadastro: {0}</value>
+  </data>
+  <data name="strErroAoNavegarParaTelaDe055">
+    <value>Erro ao navegar para tela de edição: {0}</value>
+  </data>
+  <data name="strErroAoBuscarLogradouros0">
+    <value>Erro ao buscar logradouros: {0}</value>
+  </data>
+  <data name="strErroAoCarregarLogradouros0">
+    <value>Erro ao carregar logradouros: {0}</value>
+  </data>
+  <data name="strDesejaRealmenteExcluirOLogradouro0">
+    <value>Deseja realmente excluir o logradouro {0}?</value>
+  </data>
+  <data name="strErroAoExcluirLogradouro0">
+    <value>Erro ao excluir logradouro: {0}</value>
+  </data>
+  <data name="strErroAoCarregarLogradouro0">
+    <value>Erro ao carregar logradouro: {0}</value>
+  </data>
+  <data name="strErroAoBuscarCEP0">
+    <value>Erro ao buscar CEP: {0}</value>
+  </data>
+  <data name="strErroAoSalvarLogradouro0">
+    <value>Erro ao salvar logradouro: {0}</value>
+  </data>
+  <data name="strCargoLista" xml:space="preserve">
+    <value>Cargo</value>
+  </data>
+  <data name="strInicioLista" xml:space="preserve">
+    <value>Início</value>
+  </data>
+  <data name="strTerminoLista" xml:space="preserve">
+    <value>Término</value>
+  </data>
+  <data name="strObjetivoLista" xml:space="preserve">
+    <value>Objetivo</value>
+  </data>
+  <data name="strIdAlunoFiltro" xml:space="preserve">
+    <value>Id Aluno</value>
+  </data>
+  <data name="strAtivasFiltro" xml:space="preserve">
+    <value>Ativas</value>
+  </data>
+  <data name="strVencendoFiltro" xml:space="preserve">
+    <value>Vencendo em dias</value>
+  </data>
+</root>

@@ -12,6 +12,7 @@ public partial class ConfigPage : ContentPage
         InitializeComponent();
 
         CarregarTema();
+        CarregarIdioma();
         CarregarBanco();
 
         _isCarregando = false;
@@ -51,6 +52,42 @@ public partial class ConfigPage : ContentPage
             "OK");
 
         await Shell.Current.GoToAsync("//dashboard");
+    }
+
+    #endregion
+
+    #region Idioma
+
+    private void CarregarIdioma()
+    {
+        var cultura = Preferences.Get(
+            "Cultura",
+            System.Globalization.CultureInfo.CurrentUICulture.Name);
+
+        IdiomaPicker.SelectedIndex = cultura switch
+        {
+            "en-US" => 1,
+            "es-ES" => 2,
+            _ => 0
+        };
+    }
+
+    private void OnIdiomaSelectedIndexChanged(object? sender, EventArgs e)
+    {
+        if (_isCarregando || IdiomaPicker.SelectedIndex < 0)
+            return;
+
+        var cultura = IdiomaPicker.SelectedIndex switch
+        {
+            1 => "en-US",
+            2 => "es-ES",
+            _ => "pt-BR"
+        };
+
+        Preferences.Set("Cultura", cultura);
+
+        WeakReferenceMessenger.Default.Send(
+            new CulturaPreferencesUpdatedMessage(cultura));
     }
 
     #endregion
