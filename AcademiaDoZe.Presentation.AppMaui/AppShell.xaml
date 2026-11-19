@@ -73,4 +73,12 @@
             Route="matriculas" />
     </FlyoutItem>
 
+    <FlyoutItem Title="{helpers:Translate strAcessoAlunoTitulo}">
+        <ShellContent ContentTemplate="{DataTemplate views:AcessoAlunoPage}" Route="acesso-alunos" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="{helpers:Translate strAcessoColaboradorTitulo}">
+        <ShellContent ContentTemplate="{DataTemplate views:AcessoColaboradorPage}" Route="acesso-colaboradores" />
+    </FlyoutItem>
+
 </Shell>
